@@ -1,0 +1,247 @@
+#retailContent,#retdrillContent{
+    height: 72vh;
+    width: -webkit-fill-available;
+    /* border: 1px solid lightgray; */
+    margin-top: 2px;
+}
+
+.channelNew{
+    background-color: rgba(121, 121, 121, 0.5);
+                            box-sizing: border-box;
+                            font-family: 'Arial Regular', 'Arial', sans-serif;
+                            font-weight: 600;    font-size: 14px;
+                            color: #363636;height: 22px;
+}
+
+.channelHeader{
+    width: 99.8%;
+    margin-top: -3px;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Poppins SemiBold', 'Poppins Regular', 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #ffffff;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.retTabularDiv{
+    width: 25%;
+    float: left;
+    height: 72vh;
+    border: 1px solid lightgray;
+}
+td{
+    height: 50px;
+}
+.channelytm{
+    height:20%;
+    /* border: 1px solid grey; */
+}
+.channel3month,.channel6month,.channel9month{
+    height: 48%;
+    width: 100%;
+    /* border: 1px solid grey; */
+}
+.retailerChart,.dataChart{
+    border: 1px solid lightgray;
+}
+
+.retailerTable{
+    border-collapse: collapse;
+    width: 100%;
+    float: left;
+
+}
+.chartDiv {
+    width: 71%;
+    height: 100%;
+    max-height: 100%;
+    /* border: 1px solid lightgray; */
+    float:right;
+}
+.headingbar1{
+    font-size: 14.5px;
+    font-family: 'Arial Regular', 'Arial', sans-serif;
+    background-color: inherit;
+    color: #3d84a6 !important;
+    font-size: 15px;
+    width: 325px;
+    text-align: left;
+    /* margin-left: 300px; */
+    width: -webkit-fill-available;
+}
+.headingbar > .heading{
+    color: black !important;
+    border: 1px;
+    
+  }
+
+
+
+
+    .row {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .reportTitleBar{
+        text-align: center;
+        background-color: #333333;
+        font-family: 'Poppins SemiBold', 'Poppins Regular', 'Poppins', sans-serif;
+        min-height: 33px;
+    }
+    .reportTitleRow{
+        margin-left: 26px;
+        margin-right: 32px;
+    }
+    .reportTitle{
+        color: white;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+    
+    .reportSubTitle{
+      color: white;
+      font-weight: 200;
+      font-size: 12px;
+    }
+    
+    .filterRow {
+        min-height: 55px;
+        background-color: inherit;
+        text-align: center;
+        margin-left: 26px;
+        margin-right: 32px;
+        /* padding: 4px; */
+    }
+    select {
+        font-size: 12px;
+        min-width: 100%;
+        width: 100%;
+        text-align: center;
+        height: 28px;
+    }
+
+    .filterCol {
+        border: 0px solid darkgray;
+        background-color: white;
+        margin: 1px;
+    }
+
+    
+    .col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        background-color: rgba(223, 223, 223, 0.4);
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 0px;
+        padding-left: 3px;
+        max-width: 100%;
+    }
+    .filterTitle {
+        font-size: 12px;
+    }
+
+    .allButtons{
+        cursor: pointer;
+        width: 12vw;
+    }
+    .mainContent > .col {
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    
+   
+    
+
+    .highcharts-figure, .highcharts-data-table table {
+        min-width: 405px; 
+        max-width: 500px;
+        height: 400px;
+        margin: 1em auto;
+    }
+    
+   
+    
+    .highcharts-data-table table {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid black;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 200px;
+    }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+        font-style:normal ;
+    }
+    .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+    .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+
+    #RetailerviewtableId,#partdrilltableId,#retdrilltableId,#partviewtableId1,#partviewtableId > *{
+        font-size: 10px;
+    }
+   
+    #RetailerviewtableId,#retdrilltableId,#partdrilltableId,#partviewtableId,#partviewtableId1 > tr > td,#partviewtableId1,#partviewtableId,
+    #RetailerviewtableId,#partdrilltableId,#retdrilltableId > tr > th{
+        height:1%;
+        padding-top: 0ch;
+        padding-bottom: 0ch;
+    }
+    #RetailerviewtableId,#partdrilltableId,#retdrilltableId,#partviewtableId,#partviewtableId1 tr td {
+        height: 8px;
+    }
+    .dataTables tbody tr {
+        min-height: 10px; 
+        }
+    #RetailerviewtableId,#partviewtableId1 tbody tr td:first-of-type {
+            font-size: 10px;
+            cursor: pointer;
+            /* padding :2px; */
+    }
+   #retailView1,#partView1{
+    width: 98%;
+    background-color: #5C88A8;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 3px 1px 4px 3px;
+   }
+
+
+   .metricLoader {
+    border: 8px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 8px solid #3498db;
+    width: 5px;
+    margin-bottom: -14px;
+    float: right;
+    height: 5px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+  }

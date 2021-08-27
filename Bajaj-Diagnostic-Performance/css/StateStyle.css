@@ -1,0 +1,167 @@
+#stateContent{
+    height: 72vh;
+    width: -webkit-fill-available;
+    /* border: 1px solid lightgray; */
+    margin-top: 2px;
+        margin: 0;
+        background-color: white;
+}
+.satRetperform,.satcatPotenContain{
+    width:316px;
+    height:-webkit-fill-available;
+}
+.sattotaltowns,.satpotenVsSales,.stateTabularDiv,.satpie,.catePoten{
+    width:32%;
+    float: left;
+    height: 62.7vh;
+    border: 1px solid lightgray;
+}
+td{
+    height: 50px;
+}
+
+.chartDiv1{
+    width: 300px;
+    height: 248px;
+    max-height: 100%;
+    border: 1px gray;
+    margin-left: 969px;
+    margin-top: -247px;
+    float: left;
+    
+}
+
+.chartDiv2{
+width: 570px;
+height:217px;
+max-height: 100%;
+/* border: 1px solid gray; */
+/* margin-left: 957px; */
+margin-top: -inherit;
+float: left;
+
+}
+.headingbar1{
+
+background-color: #d8d9da87;
+color: #5C88A8!important;
+font-size: 15px;
+width: 325px;
+text-align: left;
+margin-left: 300px;
+width: -webkit-fill-available;
+}
+
+.col1{
+padding-left: 0px;
+padding-right: 0px;
+width: 324px;
+}
+    .row {
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .reportTitleBar{
+        text-align: center;
+        background-color: #5C88A8;
+        min-height: 33px;
+    }
+    .reportTitleRow{
+        margin-left: 26px;
+        margin-right: 44px;
+    }
+    .reportTitle{
+        color: white;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+    
+    .reportSubTitle{
+      color: white;
+      font-weight: 200;
+      font-size: 12px;
+    }
+    
+    .filterRow {
+        min-height: 55px;
+        background-color: #d8d9da87;
+        text-align: center;
+        margin-left: 26px;
+        margin-right: 44px;
+        /* padding: 4px; */
+    }
+    select {
+        font-size: 12px;
+        min-width: 100%;
+        width: 100%;
+        text-align: center;
+        height: 20px;
+    }
+
+    .filterCol {
+        border: 1px solid darkgray;
+        background-color: white;
+        margin: 1px;
+    }
+    .col {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+        max-width: 100%;
+    }
+    .filterTitle {
+        font-size: 12px;
+    }
+
+    .allButtons{
+        cursor: pointer;
+        width: 12vw;
+    }
+  
+    .highcharts-figure, .highcharts-data-table table {
+        min-width: 405px; 
+        max-width: 500px;
+        height: 400px;
+        margin: 1em auto;
+    }
+    
+   
+    
+    .highcharts-data-table table {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid black;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+        font-style:normal ;
+    }
+    .highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+    .highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+   
+   
+    

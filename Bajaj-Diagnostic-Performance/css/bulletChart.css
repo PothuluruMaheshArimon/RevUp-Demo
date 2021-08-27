@@ -1,0 +1,30 @@
+
+.uplift{
+    color:#1d5714;
+    background-color: #a9ff9a ;
+    border-radius: 20px;
+    text-align: right;
+}
+
+.downlift{
+     color:  #9f191c; 
+    background-color:  #ffc4c4;
+    border-radius: 20px;
+    text-align: right;
+}
+.equalLift{
+    color:#1d5714;
+    background-color: #a9ff9a ;
+    border-radius: 20px;
+    text-align: right;
+}
+
+#benchmarrkId{
+    width: 105%;
+    margin-left: 208px;
+    /* margin-top: -44vw; */
+    top: 0;
+    position: absolute;
+    height: 100%;
+    border: none;
+}

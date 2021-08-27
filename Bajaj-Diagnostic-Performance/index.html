@@ -1,0 +1,3152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Bajaj Charts</title>
+    <META HTTP-EQUIV="Access-Control-Allow-Origin">
+    <script src="./js/popper.js" type='text/javascript'></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery.min.js" type='text/javascript'></script>
+    <script src="./js/stock-highstock.js" type='text/javascript'></script>
+    <link rel="stylesheet" href="./css/tagStyle.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/jquery.mentionsInput.css">
+    <link rel="stylesheet" href="./css/perfStyle.css">
+    <link rel="stylesheet" href="./css/indStyle.css">
+    <link rel="stylesheet" href="./css/StateStyle.css">
+    <link rel="stylesheet" href="./css/DistriStyle.css">
+    <link rel="stylesheet" href="./css/css/highcharts1.css">
+    <link rel="stylesheet" href="./css/PartStyle.css">
+    <link rel="stylesheet" href="./css/bootstap-multiselect.css">
+    <script src="./js/jquery-3.5.1.js" type='text/javascript'></script>
+    <script src="./js/modules-map.js" type='text/javascript'></script>
+    <script src="./js/in-all-disputed.js" type='text/javascript'></script>
+    <script src="./js/jquery.dataTables.min.js" type='text/javascript'></script>
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/RetailerStyle.css">
+    <link rel="stylesheet" href="./css/bulletChart.css">
+    <link href="./css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <script src="./js/jquery-ui.js" type='text/javascript'></script>
+    <link href="./css/jquery-ui.css" rel="stylesheet">
+    <script src="./js/bootstrap.min.js" type='text/javascript'></script>
+    <script src="./js/common.js" type='text/javascript'></script>
+    <script src="./js/httpintercptor.js" type='text/javascript'></script>
+    <script src="./js/dashboardDetails.js" type='text/javascript'></script>
+    <script src="./js/multi-select.js" type='text/javascript'></script>
+    <script src="./js/filter.js" type='text/javascript'></script>
+    <script src="./js/poper.min.js" type='text/javascript'></script>
+    <script src="./js/indiaView.js" type='text/javascript'></script>
+    <script src="./js/stateView.js" type='text/javascript'></script>
+    <script src="./js/DistributerView.js" type='text/javascript'></script>
+    <script src="./js/RetailerView.js" type='text/javascript'></script>
+    <script src="./js/PartView.js" type='text/javascript'></script>
+    <script src="./js/performance.js" type='text/javascript'></script>
+    <script src="./js/underscore-min.js" type='text/javascript'></script>
+    <script src='./js/mentionsInput.js' type='text/javascript'></script>
+    <script src='./js/jquery.elastic.js' type='text/javascript'></script>
+    <script src="./js/modules-exporting.js" type='text/javascript'></script>
+    <script src="./js/modules-export-data.js" type='text/javascript'></script>
+    <script src="./js/chart-bot.js" type='text/javascript'></script>
+    <script src="./js/highchart-digilytics.js"></script>
+    <link rel="stylesheet" href="./css/ui.jqgrid.min.css">
+    <script src="./js/jquery.jqgrid.min.js" type='text/javascript'></script>
+    <link rel="stylesheet" href="./css/jquery-ui-custom.css">
+    <script src="./js/appInsightsTrack.js" type='text/javascript'></script>
+    <script src="./js/observationData.js" type='text/javascript'></script>
+    <script src="./js/data.js" type='text/javascript'></script>
+    <script src="./js/channelView.js" type='text/javascript'></script>
+     <script src="./js/channelViewDrill.js" type='text/javascript'></script>
+    <script src="./js/csvDownload.js" type='text/javascript'></script>
+    <script src="./js/retailerRecomemed.js" type='text/javascript'></script>
+    <script src="./js/bajaj_insight.js" type='text/javascript'></script>
+    <script src="./js/crypto.js" type='text/javascript'></script>
+
+</head>
+
+<body style="overflow: hidden;" id="dashboardBodyID">
+
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: lightgray;
+            min-width: 110px;
+            box-shadow: 0px 6px 10px 0px rgba(0, 0, 0, 0.2);
+            font-size: small;
+            z-index: 1;
+        }
+
+        .dropdown-content a:hover {
+            background-color: inherit;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: inherit;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Ensure that the demo table scrolls */
+        /* th,
+        td {
+            white-space: nowrap;
+        } */
+
+        div.dataTables_wrapper {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        div.container {
+            width: 80%;
+        }
+
+        #snackbar {
+            background-color: #6c757d;
+            color: #ffff;
+            padding: 17px;
+            position: absolute;
+            top: 0;
+            border-radius: 6px;
+            margin: 7px;
+            margin-left: 23px;
+            display: block;
+
+        }
+
+        .lastRefreshedDateTitle {
+            position: absolute;
+            color: white;
+            left: 0;
+            font-size: 12px;
+            padding-left: 8px;
+        }
+        #backButton {
+            display: inline-block;
+            border-radius: 7px;
+            border: 2px double #cccccc;
+            text-align: center;
+            font-size: 10px;
+            width: 38px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin-top: 13px;
+    }
+
+        .downloadCSV {
+            position: absolute;
+            color: white;
+            right: 0;
+            font-size: 12px;
+            padding-right: 8px;
+            top: 0;
+            padding-top: 8px;
+        }
+        .downloadCount1{
+            border: none;
+    padding: 2px;
+    /* background-color: dimgray; */
+    border-radius: 7px;
+    font-size: 8px;
+        }
+        .tooltip-inner {
+     text-align: left; 
+  
+}
+.bg-danger {
+  background-color: #f2dede;
+}
+.bg-danger td{ background-color : #f70808d8; }
+
+.bg-danger1 {
+  background-color: #f2dede;
+}
+.bg-danger1 td{ background-color : rgb(230, 169, 56); }
+    </style>
+     <div class="col sideDiv">
+            <div class="row" id="digiImg">
+                <img src="./image/digi.png" alt="Digilytics :)">
+            </div>
+            <div class="cal" style="    height: 84%;
+            overflow-y: auto;">
+                <input class="mainTl" type="button" value="Review"></input></br>
+                <div id="subView" style="height: 182px;">
+                    <!-- <div class="subTl" id="#indiaView"><span class="titleNameSp">India View</span> </div> -->
+                    <input id="indiaView" type="button" value="All India View" class="allButtons subTl"></input>
+                </br>
+                <input id="stateView" type="button" value="State View" class="allButtons subTl"></input><br/>
+                <input id="disrtiView" type="button" value="Distributor View" class="allButtons subTl"></input><br/>
+                <input id="channelView" type="button" value="Channel View" class="allButtons subTl"></input><br/>
+                <input id="perforView" type="button" value="Performance View" class="allButtons subTl"></input><br/>
+                <input id="benchView" type="button" value="Benchmark" class="allButtons subTl"></input><br/>
+        
+                </div>
+                <!-- <div class="mainIns"><span class="titleNameSp"> Insights</span></div> -->
+                <input class="mainIns" type="button" value="Insights"></input></br>
+                <div id="subViewIn" style="display: none;">
+                    <!-- <div class="mainsubIn" id="mrShare"><span class="titleNameSp" style="margin-left: 20px;"> Market Share</span></div></br>-->
+                    <input class="mainsubIn"id="mrShare" style=" font-size: 13px;   background-color: #0000008f;;" type="button" value="   Market Share"></input></br> 
+                    <div id="subViewIn1" style="display: none;    
+                    height: 62px;">
+                        <input id="LMSaherView" type="button" value="       Low Market Share" class="allButtons subTl"></input><br/>
+                        <input id="MSCView" type="button" value="       Market Share Decline" class="allButtons subTl"></input><br/>
+                
+                    </div>
+                    <!-- <div class="mainsubIn1" id="distEff"><span class="titleNameSp" style="margin-left: 20px;">Distributor Effectiveness</span> </div></br>
+                     -->
+                    <input class="mainsubIn1" style="    background-color: #0000008f;;font-size: 13px;" id="distEff" type="button" value="   Distributor Effectiveness"></input></br> 
+                    <div id="subViewIn2" style="display: none;">
+                        <input id="RCView" type="button" value="       Retailer Concentration" class="allButtons subTl"></input><br/>
+                        <input id="RoSView" type="button" value="       Repeatability of Sales" class="allButtons subTl"></input><br/>
+                
+                    </div>
+                </div>
+                <input class="recommendation" type="button" value="Recommendations"></input></br>
+                <div id="subViewOfRecomme" > 
+                    <!-- <div class="subTl" id="#indiaView"><span class="titleNameSp">India View</span> </div> -->
+                    <input id="recomendView" type="button" style="font-size: 11px;" value=" Up Sell / Cross Sell Opportunities" class="allButtons subTl"></input>
+                </br>
+                </div>
+            </div>
+
+    </div>
+    <div id="benchmarrkId"></div>
+
+    <div class="col container-fluid" id="diagnosticId">
+
+
+
+        <!--***********  dashboard header **************************** -->
+        <div class="row reportTitleRow">
+            <div class="col-sm-12 reportTitleBar" style="padding: 5px;">
+                <div class="lastRefreshedDateTitle">Last Refreshed (Date) - <span id="lastRefreshedDateId"></span></div>
+
+                <div class="reportTitle">All India View</div>
+                <!-- <div id="backButtonDiv" style="float: right;    margin-top: -3%; margin-right:3%;display: none;">
+                    <button id="backButton" onclick="goBackChannelView()"><u>Back</u></button>
+                </div> -->
+                <div class="pull-right downloadCSV" id="downloadCsvLoader" style="display: none;">&nbsp; <span
+                        class="fa fa-spinner fa-spin"></span>&nbsp;<button id="countId" class="downloadCount1"
+                       ></button>  </div>
+            </div>
+        </div>
+
+        <!--*********** dashboard filter **************************** -->
+        <div class="row filterRow">
+            <div class="col filterCol" id="yearDiv" style="    margin-left: -6px;">
+                <div class="filterTitle">Fiscal Year</div>
+                <select name="Year" class="filter" id="yearFilter"></select>
+            </div>
+            <div class="col filterCol" id="monthDiv">
+                <div class="filterTitle">Month</div>
+                <select name="Month" class="filter" id="monthFilter" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="stateDiv">
+                <div class="filterTitle">State &nbsp;&nbsp;&nbsp;<i class="fa fa-eraser" id="fa-fa-eraser" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFil" style="display: none;">
+                    </div>
+                </div>
+                <select name="State" class="filter" id="stateFilter" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="territoryDiv" style="display: none;">
+                <div class="filterTitle">Territory &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="fa-fa-eraser" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFil" style="display: none;">
+                    </div>
+                </div>
+                <select name="Territory" class="filter" id="territoryFilter" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="distributerDiv" style="display: none;">
+                <div class="filterTitle">Distributor &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="fa-fa-eraser" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFil" style="display: none;">
+                    </div>
+                </div>
+                <select name="Distributor" class="filter" id="distributorFilter" multiple="multiple"></select>
+            </div>
+
+            <div class="col filterCol" id="districtDiv" style="display: none;">
+                <div class="filterTitle">District Name</div>
+                <select name="district" class="filter" id="districtFilter" multiple="multiple"></select>
+            </div>
+
+            <div class="col filterCol" id="classifictionDiv">
+                <div class="filterTitle">Part Category </div><!-- part code change to partcategory -->
+                <select name="classifiction" class="filter" id="classifictionFilter" multiple="multiple"></select>
+            </div>
+
+            <div class="col filterCol" id="partCategoryDiv" style="margin-right: -4px;">
+                <!-- partcategory change to part Group -->
+                <div class="filterTitle"> Part Group</div>
+                <select name="Part_Category" class="filter" id="partCategoryFilter" multiple="multiple"></select>
+            </div>
+
+
+            <div class="col filterCol" id="retailerDiv" style="margin-right: -4px;
+            margin-left: 6px;display: none;">
+                <div class="filterTitle">Retailer Segment </div>
+                <select name="Retailer_Segment" class="filter" id="segmentFilter" multiple="multiple"></select>
+            </div>
+
+            <div class="col filterCol" id="retailernameDiv" style="display: none;">
+                <div class="filterTitle">Retailer Name</div>
+                <select name="Retailer" class="filter" id="retailernameFilter" multiple="multiple"></select>
+            </div>
+
+        </div>
+        <div class="row" style="    width: 100%;
+        margin: 0;">
+
+        <!--*********** statr dashboard main content **************************** -->
+        <div class="row" id="mainViewContent" style="    width: 96.6%;
+        /* margin-left: 173px; */
+        margin: 0;">
+
+            <!--*********** start all india view **************************** -->
+            <div id="indiaContent">
+                <div class="row" style="margin: 0px;margin-top: 0%;"> 
+                    <div class="tableDiv">
+                    <table id="indSalesMtdId" style="width: 100%;">
+
+                                <tr>
+                                    <th colspan="3">Potential <div class="dropdown">
+                                            <!-- <a class="dropbtn"></a> -->
+                                            <div class="dropdown-content">
+                                                <a onclick='createCommentDataCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                    Comment</a>
+                                                <a onclick='sharedDataCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                    Data</a>
+                                            </div>
+                                        </div>
+                                        <div id="indPot" style="margin-top: 0px;" class="metricLoader"></div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                    </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv">
+                        <table id="indSalesYtdId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Penetration %</th>
+                                <div id="indPene" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv">
+                        <table id="indSalesId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Sales Values</th>
+                                <div id="indSal" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>  &nbsp;&nbsp; 
+                    <div class="tableDiv">
+                        <table id="dealDistriIndId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Dealers Sales</th>
+                                <div id="indDeal" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv">
+                        <table id="distriIndId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Distributor Sales</th>
+                                <div id="indDistri" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv" style="width: 16.2%;">
+                        <table id="indSkuId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">#SKUs Sold</th>
+                                <div id="indSKU" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div> 
+                </div>
+                <div class="row" style="    margin: 0px;margin-top: -0.5%;    margin-right: -1.2%;">
+                    <div class="cal potenVsSales">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="State Wise Potential">State Wise Potential Vs Sales</th>
+                            </tr>
+                        </table>
+                        <div id="indPotvsSaleContain" style="width: 359px;    height: 350px;" class="State Wise Potential Vs Sales">
+
+                        </div>
+                    </div>&nbsp;
+                    <div class="cal brandPoten">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="Brand Wise Potential">Brand Wise Potential</th>
+                            </tr>
+                        </table>
+                        <div id="indBranPotenContain" style="width: 359px;    height: 350px;" class="Brand Wise Potential">
+                        </div>
+                    </div>&nbsp;
+                    <div class="cal partPoten">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="Part Category Wise Potential Vs Sales">Part Category Wise Potential Vs Sales</th>
+                            </tr>
+                        </table>
+                        <div id="indPartPotenContain" style="width: 360px;    height: 350px;" class="Part Category Wise Potential Vs Sales">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--*********** start state view **************************** -->
+            <div class="row" id="stateContent" style="display: none;">
+                <div class="row" style="margin: 0px;margin-top: 0%; width: 100%;"> 
+                    <div class="tableDiv" style="    width: 19.33%;">
+                    <table id="satPoteId" style="width: 100%;">
+
+                        <tr>
+                            <th colspan="3">Potential<div class="dropdown">
+                                    <!-- <a class="dropbtn">...</a> -->
+                                    <div class="dropdown-content">
+                                        <a onclick='createCommentDataCalling()'
+                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                            Comment</a>
+                                        <a onclick='sharedDataStateCalling()'
+                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                            Data</a>
+                                    </div>
+                                </div>
+                                <div id="statePot" style="margin-top: 0px;" class="metricLoader"></div>
+                            </th>
+                        </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                    </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv" style="    width: 19.33%;">
+                        <table id="satpenetId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Penetration %</th>
+                                <div id="statePen" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv" style="    width: 19.33%;">
+                        <table id="satSalesId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">Dealer Billing</th>
+                                <div id="stateDeal" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>  &nbsp;&nbsp; 
+                    <div class="tableDiv" style="    width: 19.33%;">
+                        <table id="satDealDisId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">#Retailers</th>
+                                <div id="stateRetai" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>&nbsp;&nbsp;
+                    <div class="tableDiv" style="    width: 18.2%;">
+                        <table id="satSkuId" style="width: 100%;">
+                            <tr>
+                                <th colspan="3">#SKUs Sold</th>
+                                <div id="stateSKU" class="metricLoader"></div>
+                            </tr>
+                            <tr>
+                                <td>CY</td>
+                                <td>PY</td>
+                                <td>YOY Growth</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row" style="    margin: 0px;width: 100%; margin-top: -0.5%;    margin-right: -1.2%;">
+                    <div class="cal satpotenVsSales">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="State Wise Potential">Territory Wise Potential Vs Sales (INR)</th>
+                            </tr>
+                        </table>
+                        <div id="satPotvsSaleContain" style="width: 351px;    height: 360px;" class="Territory Wise Potential Vs Sales">
+                        </div>
+                    </div>&nbsp;&nbsp;
+                    <div class="cal sattotaltowns" style="width: 347px;">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="State Wise Towns">Territory Wise Total Towns</th>
+                            </tr>
+                        </table>
+                        <div id="satTotalTownsContain" style="width: 351px;    height: 350px;" class="Territory Wise Total Towns">
+
+                        </div>
+                    </div>&nbsp;&nbsp;
+                    <div class="cal satpie" style="width: 354px;    height: 379px;">
+                        <!-- <div class="cal catePoten"style="height: 200px;overflow: hidden;>
+                            <table border="1">
+                                <tr class="headingbar1"> -->
+                        <div class="col1 chartDiv2" style="height: 50%;    width: 100%;">
+                            <table>
+                                <tr class="headingbar1">
+                                    <th title="Brand Wise Potential">Part Category Wise Potential Vs Sales</th>
+                                </tr>
+                            </table>
+                            <div id="satcatPotenContainId" class="Part Category Wise Potential Vs Sales"
+                                style="height: 160px;     width: 359px;">
+                            </div>
+
+                        </div>
+
+
+                        <div class="col1 chartDiv2" style="height: 50%;    width: 100%;">
+                            <table>
+                                <tr class="headingbar1">
+                                    <th title="Brand Wise Potential" style="    border-top: dotted #d8d9da90;">Brand Wise Potential</th>
+                                </tr>
+                            </table>
+                            <div id="satRetperform" class="Distributor Contribution"
+                                style="height: 159px;width: 359px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--*********** start distributor view **************************** -->
+
+            <div class="row" id="distriContent" style="display: none;">
+                <!-- <p>Distributor Overview content here ---</p>  -->
+
+                <div class="row" style="margin: 0px; width: 100%; margin-top: 0%;"> 
+                    <div class="tableDiv" style="width: 19.2%;">
+                        <table id="disSalesId" style="width: 100%;">
+    
+                            <tr>
+                                <th colspan="3"> Potential
+                                    <div class="dropdown">
+                                        <!-- <a class="dropbtn"></a> -->
+                                        <div class="dropdown-content">
+                                            <a onclick='createCommentDataCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                Comment</a>
+                                            <a onclick='sharedDataDistribCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                Data</a>
+                                        </div>
+                                    </div>
+                                    <div id="distPot" class="metricLoader"></div>
+                                </th>
+                            </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                        </table>
+                        </div>&nbsp;&nbsp;
+                        <div class="tableDiv" style="width: 19.2%;">
+                            <table id="disSalRetId" style="width: 100%;">
+                                <tr>
+                                    <th colspan="3">Distributor Retail</th>
+                                    <div id="distSale" class="metricLoader"></div>
+                                </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                            </table>
+                        </div>&nbsp;&nbsp;
+                        <div class="tableDiv" style="width: 19.2%;">
+                            <table id="disInvoId" style="width: 100%;">
+                                <tr>
+                                    <th colspan="3">Penetration %</th>
+                                    <div id="disInv" class="metricLoader"></div>
+                                </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                            </table>
+                        </div>  &nbsp;&nbsp; 
+                        <div class="tableDiv" style="width: 19.2%;">
+                            <table id="disRetailerId" style="width: 100%;">
+                                <tr>
+                                    <th colspan="3"># Retailers</th>
+                                    <div id="distRetai" class="metricLoader"></div>
+                                </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                            </table>
+                        </div>&nbsp;&nbsp;
+                        <div class="tableDiv" style="width: 19.7%;">
+                            <table id="disSkuId" style="width: 100%;">
+                                <tr>
+                                    <th colspan="3">#SKUs Sold</th>
+                                    <div id="distSKU" class="metricLoader"></div>
+                                </tr>
+                                <tr>
+                                    <td>CY</td>
+                                    <td>PY</td>
+                                    <td>YOY Growth</td>
+                                </tr>
+                            </table>
+                        </div> 
+                </div>
+
+                <!-- //chart heading// -->
+                <div class="row" style="    margin: 0px;margin-top: -0.5%;    height: 61vh;    margin-right: -1.2%;">
+                    <div class="cal disPotView" style="height: 378px;">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="Country Overview">District wise Performance</th>
+                            </tr>
+                        </table>
+                        <div id="districtPerfChartContainerId" style="width: 257px;; height: 360px;" class="District wise Performance">
+                        </div>
+                    </div>&nbsp;&nbsp;
+
+                    <div class="cal DispotenVsSales" style=" height: 378px;">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="District wise Town Reach">District wise Town Reach</th>
+                            </tr>
+                        </table>
+                        <div id="districtWiseTownReachChartContainerId" style="width: 256px;; height: 360px;" class="District wise Town Reach">
+                        </div>
+                    </div>&nbsp;&nbsp;
+
+                    <div class="cal DispotenVsSales" style=" height: 378px;">
+                        <table>
+                            <tr class="commonHeading">
+                                <th title="State Wise Potential">Part Category Potential Vs Sales</th>
+                            </tr>
+                        </table>
+                        <div id="partcategoryChartContainerId" style="width: 257px;; height: 360px;" class="Part Category wise Potential Vs Sales">
+                        </div>
+                    </div>&nbsp;&nbsp;
+
+                    <div class="cal Dispiecharts" style="height: 378px;   overflow-y: auto; width: 24.2%;">
+                        <div class="cal DispotenVsSales1"
+                            style="height: 200px;width: -webkit-fill-available;overflow:hidden;">
+                            <table>
+                                <tr class="commonHeading">
+                                    <th class="heading">Retailer Segment</th>
+                                </tr>
+                            </table>
+                            <div id="RetailerPerfChartContainerId"style="    width: 257px;height: 160px;" class="Retailer Segment">
+                            </div>
+                        </div>
+
+                        <div class="col1 chartDiv4" style="height: 200px;width: 322px;margin-top: 0px;overflow:hidden;">
+                            <table>
+                                <tr class="headingbar1">
+                                    <th title="heading" style="    border-top: dotted rgb(0 0 0 / 20%);">Retailer Performance</th>
+                                </tr>
+                            </table>
+
+                            <div id="RetailerPerformanceContainerId" style="    width: 257px;height: 160px;" class="Retailer Performance" style="margin-top:-5px ;">
+                            </div>
+
+                        </div>
+
+                        <div class="col1 chartDiv3" style="height: 200px;width: 322px;margin-top: -0px;overflow: hidden;">
+                            <table>
+                                <tr class="headingbar1">
+                                    <th title="heading" style="    border-top: dotted rgb(0 0 0 / 20%);">Retailer Breadth</th>
+                                </tr>
+                            </table>
+                            <div id="breadthPerfChartContainerId" style="    width: 257px;height: 160px;" class="Retailer Breadth">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--*********** start retailer view **************************** -->
+            <div class="row" id="retailContent" style="display: none;">
+                <!-- <div class="row" id="retailContent"> -->
+                <div class="row" style="margin: 0px; width: 100%; margin-top: 0%;"> 
+                        <div class="tableDiv" style="width: 19.2%;">
+                            <table id="retNumId" style="width: 100%;">
+        
+                                <tr>
+                                    <th colspan="3">No of Retailer<div class="dropdown">
+                                            <a class="dropbtn">...</a>
+                                            <div class="dropdown-content">
+                                                <a onclick='createCommentDataCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                    Comment</a>
+                                                <a onclick='sharedDataRetailCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                    Data</a>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                                        <tr>
+                                            <td>CY</td>
+                                            <td>PY</td>
+                                            <td>YOY Growth</td>
+                                        </tr>
+                            </table>
+                            </div>&nbsp;&nbsp;
+                            <div class="tableDiv" style="width: 19.2%;">
+                                <table id="retAvg6Id" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">Avg of Last 6 Months Sales(INR)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>&nbsp;&nbsp;
+                            <div class="tableDiv" style="width: 19.2%;">
+                                <table id="retSkuId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">#SKUs Sold</th>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>  &nbsp;&nbsp; 
+                            <div class="tableDiv" style="width: 19.2%;">
+                                <table id="retInvoId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">Retailer Invoice Frequency</th>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>&nbsp;&nbsp;
+                            <div class="tableDiv" style="width: 19.7%;">
+                                <table id="retcontriId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">% Contribution to Sales</th>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div> 
+                </div>
+                <div class="row" style="    margin: 0px;width: 100%; margin-top: -0.5%;    margin-right: -1.2%;">
+                    <div class="cal chartDiv" style="    width: 99.8%;
+                        font-size: 11px;">
+                        <div class="retailerTable">
+                            <div class="headingbar">
+                                <span style="    color: #3d84a6;font-weight: bold; font-size:18px"> Retailer Performance
+                                </span>
+                                <div class="dropdown">
+                                    <a class="dropbtn">...</a>
+                                    <div class="dropdown-content">
+
+                                        <a onclick='createCommentTableDataCalling()'
+                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                            Comment</a>
+                                        <a onclick='retailerPerformancePageShareDataDownload()'
+                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+
+                                    </div>
+
+                                </div>
+                                <button id="retailerCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                    style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                    <i id="showDownload" class="fa fa-download"></i>
+                                    <i id="banDownload" class="fa fa-ban" aria-hidden="true"
+                                        style="display: none;color: red;"></i>
+                                </button>
+
+                            </div>
+                            <table id='RetailerviewtableId' class="Retailer Performance"
+                                style="max-height: 414px;margin-left: 5px; width:100%; "> </table>
+                            <div id="pager7" style="display: none; margin-top: 20%;color:#3498db;
+                                    font-size: 30px; height: 42%; margin-left: 38%;">
+                                <i class="fa fa-spinner fa-spin"></i>Loading...
+                            </div>
+                        </div>
+
+                        <button class="fa fa-caret-left" id="prePager" onclick='prePageData()' data-toggle="tooltip"
+                            title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPager" onclick='nextPageData()' data-toggle="tooltip"
+                            title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!--*********** start retailer view drill down **************************** -->
+            <div class="row" id="retdrillContent" style="display: none;">
+                <!--  <p>Part Overview content here ---</p> -->
+                <div class="cal partTabularDiv">
+                    <!-- <table border="1">
+                        <div class="loader1" id='keyMetricsLoaderDrill' style="display: none;"></div>
+                     </table> -->
+                    <!-- 1 -->
+                    <div class="tableDiv">
+                        <table border="1" id="retdrillId">
+                            <tr>
+                                <th colspan="3" style="padding: 0px;margin: 0px;">
+                                    <div class="loader1" id='keyMetricsLoaderPartDrillDown' style="display: none;">
+                                    </div>
+                                    <input id="retailView1" type="button" value="Back" class="backButtons"
+                                        style="cursor: pointer;"></input>&nbsp;
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="3">Number of parts not ordered</th>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </div>
+                <div class="cal chartDiv" style="width:75%;font-size:15px ;">
+                    <div class="cal partTable">
+                        <div class="headingbar">
+                            <span style="    color: #3d84a6;font-weight: bold; font-size:18px"> Part Category
+                                Performance </span>
+                            <div class="dropdown">
+                                <a class="dropbtn">...</a>
+                                <div class="dropdown-content">
+                                    <a onclick='createCommentTableDataCalling()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                        Comment</a>
+                                    <a onclick='sharedDataPerformanceDrillDownPage()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div>
+                            </div>
+                            <button id="retailerCsvDownloadRetailerDril"
+                                onclick='downloadMethodQueue(this.id)'
+                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                <i id="showDownloadRetailerDril" class="fa fa-download"></i>
+                                <i id="banDownloadRetailerDril" class="fa fa-ban" aria-hidden="true"
+                                    style="display: none;color: red;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cal">
+                        <table id='retdrilltableId' class="table table-striped table-bordered"
+                            style="height: 100%;margin-left: 5px;">
+                        </table>
+                        <div id="pager9" style="display: none; color:#3498db;margin-top: -19%;
+                         font-size: 30px; height: 42%; margin-left: 38%;">
+                            <i class="fa fa-spinner fa-spin"></i>Loading...
+                        </div>
+                    </div>
+
+                    <button class="fa fa-caret-left" id="prePagerdrill" onclick='prePageDataDrill()'
+                        data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                    </button>
+                    <button class="fa fa-caret-right" id="nextPagerdrill" onclick='nextPageDataDrill()'
+                        data-toggle="tooltip" title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                    </button>
+                    <span
+                        style="font-family:Arial;font-size: 10.5pt; font-weight: bold; color:#3d84a6; background-color: #d8d9da87;padding: 2.3px;">The
+                        recommendation list and all values shown are based on last 180 days(6months) of sale</span>
+
+                </div>
+            </div>
+
+            <!--*********** start part view **************************** -->
+            <div class="row" id="pertContent" style="display: none;">
+                <!--  <p>Part Overview content here ---</p> -->
+                <div class="cal partTabularDiv">
+                    <table border="1">
+                        <tr class="commonHeading">
+                            <th title="Current Month">CY</th>
+                            <th title="Last year same month">PY</th>
+                            <th title="Last Month">YoY Growth</th>
+                        </tr>
+                        <div class="loader1" id='keyMetricsLoaderPart' style="display: none;"></div>
+                    </table>
+                    <!-- 1 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partPonId">
+                            <tr>
+                                <th colspan="3">Potential<div class="dropdown">
+                                        <a class="dropbtn">...</a>
+                                        <div class="dropdown-content">
+                                            <a onclick='createCommentDataCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                Comment</a>
+                                            <a onclick='sharedDataPartCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                Data</a>
+                                        </div>
+
+                                    </div>
+                                </th>
+                            </tr>
+                            <!-- <tr><td>1233</td><td>1481</td><td>4542</td></tr> -->
+                        </table>
+                    </div>
+                    <!-- 2 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partPenId">
+                            <tr>
+                                <th colspan="3">Penetration</th>
+                            </tr>
+                            <!-- <tr><td>1253</td><td>1418</td><td>4584</td></tr> -->
+                        </table>
+                    </div>
+                    <!-- 3 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partSkuId">
+                            <tr>
+                                <th colspan="3">#SKUs Sold</th>
+                            </tr>
+                            <!-- <tr><td>1223</td><td>1248</td><td>4354</td></tr> -->
+                        </table>
+                    </div>
+                    <!-- 5 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partInvoId">
+                            <tr>
+                                <th colspan="3">Retailer Invoice Frequency</th>
+                            </tr>
+                            <!-- <tr><td>1223</td><td>1438</td><td>4534</td></tr> -->
+                        </table>
+                    </div>
+                    <!-- 5 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partcontriId">
+                            <tr>
+                                <th colspan="3">% Contribution to Sales</th>
+                            </tr>
+                            <!-- <tr><td>1233</td><td>1248</td><td>4534</td></tr> -->
+                        </table>
+                    </div>
+                </div>
+                <div class="cal chartDiv" style="width:75%;font-size:15px ;">
+                    <div class="cal partTable">
+                        <div class="headingbar">
+                            <span style="    color: #3d84a6;
+                            font-weight: bold;
+                            font-size: 15px;"> Part Group Performance
+                            </span>
+                            <div class="dropdown" style="    margin-left: 32vw;color: #3d84a6;
+                            font-weight: bold;
+                            font-size: 15px;">
+                                Part Group<a class="dropbtn">...</a>
+                                <div class="dropdown-content">
+                                    <a onclick='createCommentTableDataCalling()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                        Comment</a>
+                                    <a onclick='partGroupPageShareData()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div>
+                            </div>
+                            <button id="partGroupCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                <i id="partGroupshowDownload" class="fa fa-download"></i>
+                                <i id="partGroupbanDownload" class="fa fa-ban" aria-hidden="true"
+                                    style="display: none;color: red;"></i>
+                            </button>
+
+                            <div class="dropdown" style="margin-left: 4%;color: #3d84a6;
+                            font-weight: bold;
+                            font-size: 15px;">
+                                Part Code<a class="dropbtn">...</a>
+                                <div class="dropdown-content">
+                                    <a onclick='createCommentTableDataCalling()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                        Comment</a>
+                                    <a onclick='partCodePageShareData()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div>
+                            </div>
+                            <button id="partCodeCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                <i id="partCodeshowDownload" class="fa fa-download"></i>
+                                <i id="partCodebanDownload" class="fa fa-ban" aria-hidden="true"
+                                    style="display: none;color: red;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cal">
+                        <section style="border: 1px solid grey; height: 190px;">
+                        <table id='partviewtableId' class="table table-striped table-bordered" cellspacing="0"
+                            style="width: 100%;height: 50%;">
+                        </table>
+                        <div id="pager10" style="display: none; color:#3498db;
+                        font-size: 30px; height: 42%; margin-left: 38%;">
+                            <i class="fa fa-spinner fa-spin"></i>Loading...
+                        </div>
+
+                        <button class="fa fa-caret-left" id="prePagerPartView1" onclick='prePageDataPartView1()'
+                            data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPagerPartView1" onclick='nextPageDataPartView1()'
+                            data-toggle="tooltip" title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+</section>
+
+                    </div>
+                    <div class="cal">
+                        <section style="border: 1px solid grey; height: 190px;">
+                        <table id='partviewtableId1' class="table table-striped table-bordered" cellspacing="0"
+                            style="width: 100%;height: 50%;">
+                        </table>
+
+                        <div id="pager11" style="display: none; color:#3498db;
+                        font-size: 30px; height: 42%; margin-left: 38%;">
+                            <i class="fa fa-spinner fa-spin"></i>Loading...
+                        </div>
+
+                        <button class="fa fa-caret-left" id="prePagerPartView2" onclick='prePageDataPartView2()'
+                            data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPagerPartView2" onclick='nextPageDataPartView2()'
+                            data-toggle="tooltip" title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+</section>
+                    </div>
+                </div>
+            </div>
+
+            <!--*********** start part view  drill down**************************** -->
+            <div class="row" id="partdrillContent" style="display: none;">
+                <!--  <p>Part Drill View content here ---</p> -->
+                <div class="cal partTabularDiv">
+                    <table border="1">
+                        <div class="loader1" id='keyMetricsLoaderPartDrill' style="display: none;"></div>
+                    </table>
+                    <!-- 1 -->
+                    <div class="tableDiv">
+                        <table border="1" id="partdrillId1">
+                            <!-- <tr>
+                                <th colspan="3">No of Retailer who didn't ordered</th>
+                             </tr>
+                             -->
+                            <tr>
+                                <th colspan="3" style="padding: 0px;margin: 0px;">
+                                    <input id="partView1" type="button" value="Back" style="cursor: pointer;"
+                                        class="backButtons"></input>&nbsp;
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="3">No of Retailer who didn't ordered<div class="dropdown"
+                                        style=" margin-left: 9%;">
+                                        <a class="dropbtn">...</a>
+                                        <div class="dropdown-content">
+                                            <a onclick='createCommentDataCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                Comment</a>
+                                            <a onclick='sharedDataRecommandCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                Data</a>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="tableDiv">
+                        <table border="1" id="partdrillId">
+                            <tr>
+                                <th colspan="3">Highest Sales By Retailer (&#x20B9) </th>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="cal chartDiv" style="width:75%;font-size:15px ;">
+                    <div class="cal partTable">
+                        <div class="headingbar">
+                            <span class="heading"> Part Category Performance </span>
+                            <div class="dropdown">
+                                <a class="dropbtn">...</a>
+                                <div class="dropdown-content">
+                                    <a onclick='createCommentTableDataCalling()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                        Comment</a>
+                                    <a onclick='sharedDataPartDrillCalling()'
+                                        style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div>
+                            </div>
+                            <button id="partDrillCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                <i id="partDrillshowDownload" class="fa fa-download"></i>
+                                <i id="partDrillbanDownload" class="fa fa-ban" aria-hidden="true"
+                                    style="display: none;color: red;"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="cal">
+                        <table id='partdrilltableId' class="table table-striped table-bordered" cellspacing="0"
+                            style="width: 100%;height: 100%;">
+                        </table>
+                        <div id="pager12" style="display: none; color:#3498db;margin-top: -19%;
+                         font-size: 30px; height: 42%; margin-left: 38%;">
+                            <i class="fa fa-spinner fa-spin"></i>Loading...
+                        </div>
+
+                        <button class="fa fa-caret-left" id="prePagerPartViewDrill" onclick='prePageDataPartViewDrill()'
+                            data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPagerPartViewDrill"
+                            onclick='nextPageDataPartViewDrill()' data-toggle="tooltip" title="Next"
+                            style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!--*********** start performance view view **************************** -->
+            <div class="row" id="perforContent" style="margin-top: 2px;margin-left: 0px;  max-height: 74vh; width: 99%;display: none;">
+                <!-- <div class="mainContent"> -->
+                <div class="row" style="margin: 0px; width: 100%; margin-top: 0%;"> 
+                    <!-- <div class="cal tabularDiv"> -->
+                        <div class="tableDiv" style="width: 19.3%;">
+                            <table id="totalSalesMtdId" style="width: 100%;">
+        
+                                <tr>
+                                    <th colspan="3">Total Sales - MTD<div class="dropdown">
+                                            <!-- <a class="dropbtn">...</a> -->
+                                            <div class="dropdown-content">
+                                                <a onclick='createCommentDataCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                    Comment</a>
+                                                <a onclick='sharedDataPerformCalling()'
+                                                    style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                    Data</a>
+                                            </div>
+                                        </div>
+                                        <div id="perToSaMtd" style="margin-top: 0px;" class="metricLoader"></div>
+                                    </th>
+                                </tr>
+                                        <tr>
+                                            <td>CY</td>
+                                            <td>PY</td>
+                                            <td>YOY Growth</td>
+                                        </tr>
+                            </table>
+                            </div>&nbsp;&nbsp;
+                            <div class="tableDiv" style="width: 19.3%;">
+                                <table id="totalSalesYtdId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">Total Sales - YTD</th>
+                                        <div id="perToSa" class="metricLoader"></div>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>&nbsp;&nbsp;
+                            <div class="tableDiv" style="width: 19.3%;">
+                                <table id="salesTableId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">Avg Sales/Retailer</th>
+                                        <div id="perSales" class="metricLoader"></div>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>  &nbsp;&nbsp; 
+                            <div class="tableDiv" style="width: 19.3%;">
+                                <table id="invoiceTableId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">Avg Invoice/Retailer</th>
+                                        <div id="perInvoice" class="metricLoader"></div>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>  &nbsp;&nbsp; 
+                            <div class="tableDiv" style="width: 19.3%;">
+                                <table id="skuTableId" style="width: 100%;">
+                                    <tr>
+                                        <th colspan="3">#SKUs Sold</th>
+                                        <div id="perSKU" class="metricLoader"></div>
+                                    </tr>
+                                    <tr>
+                                        <td>CY</td>
+                                        <td>PY</td>
+                                        <td>YOY Growth</td>
+                                    </tr>
+                                </table>
+                            </div>
+                </div>
+                <div class="row" style="width: 100%;background-color: white;">
+                    <div class="cal chartDiv" style="    height: 80%;
+                    width: 100%;    margin-top: -4px;
+                    max-height: 80%;">
+                        <div class="cal sliderChart" style="margin-right: -8px;
+                        margin-left: -9px;">
+                            <div class="headingbar">
+                                <table style="    width: 100.7%;margin-left: -7px;">
+                                    <tr class="commonHeading">
+                                        <th style="padding-left: 5px;" title="Current Month">Select Date Range</th>
+                                    </tr>
+                                    <div class="loader1" id='keyMetricsLoader' style="display: none;"></div>
+                                </table>
+                            </div>
+                            <div>
+                                <label for="slider" style="margin-left: 40px;">
+                                    <span class="min" style="-webkit-text-stroke: thin;"></span>
+                                    <span class="max" style="margin-left: 20px; -webkit-text-stroke: thin;"></span>
+                                    </lable>
+                            </div>
+                            <div id="slider" name="slider"></div>
+                        </div>
+                        <div class="cal dataChart" style="    margin-right: -8px;
+                        margin-left: -9px;    height: 300px;
+                        margin-top: 7px;">
+                            <div class="headingbar">
+                                <table style="margin-left: -7px;    width: 100.7%;">
+                                    <tr class="commonHeading">
+                                        <th style="padding-left: 5px;" title="Current Month">SALES TREND</th>
+                                    </tr>
+                                    <div class="loader1" id='keyMetricsLoader' style="display: none;"></div>
+                                </table>
+                            </div>
+                            <div id="perfChartcontainer" class="SALES TREND" style="max-height: 270px;">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+
+            <!--*********** start channel view **************************** -->
+            <div class="row" id="channelContent" style="display: none;
+            margin-top: 2px;  max-height: 74vh;     margin-left: 0px;width: 99%;">
+                <div class="channelHeader"><span>Retailer Performance</span></div>
+                <div class="row" style="margin: 0px; width: 100%; margin-top: 0%;"> 
+                    <div class="tableDiv" style="width: 19.2%;">
+                        <table id="retCvNumId" style="width: 100%;">
+                
+                                        <tr>
+                                        <th colspan="3">No of Retailer<div class="dropdown">
+                                        <!-- <a class="dropbtn"></a> -->
+                                        <div class="dropdown-content">
+                                            <a onclick='createCommentDataCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                    Comment</a>
+                                                <a onclick='sharedDataRetailCalling()'
+                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Share
+                                                Data</a>
+                                            </div>
+                                                </div>
+                                                <div id="chanNoOfRetai" class="metricLoader"></div>
+                                            </th>
+                                        </tr>
+                                                <tr>
+                                                    <td>CY</td>
+                                                    <td>PY</td>
+                                                    <td>YOY Growth</td>
+                                                </tr>
+                                    </table>
+                                    </div>&nbsp;&nbsp;
+                                    <div class="tableDiv" style="width: 19.2%;">
+                                        <table id="retCvAvg6Id" style="width: 100%;">
+                                            <tr>
+                                                <th colspan="3">Avg of Last 6 Months Sales</th>
+                                                <div id="chanAvgSixMonth" class="metricLoader"></div>
+                                            </tr>
+                                            <tr>
+                                                <td>CY</td>
+                                                <td>PY</td>
+                                                <td>YOY Growth</td>
+                                            </tr>
+                                        </table>
+                                    </div>&nbsp;&nbsp;
+                                    <div class="tableDiv" style="width: 19.2%;">
+                                        <table id="retCvSkuId" style="width: 100%;">
+                                            <tr>
+                                                <th colspan="3">#SKUs Sold</th>
+                                                <div id="chanSKU" class="metricLoader"></div>
+                                            </tr>
+                                            <tr>
+                                                <td>CY</td>
+                                                <td>PY</td>
+                                                <td>YOY Growth</td>
+                                            </tr>
+                                        </table>
+                                    </div>  &nbsp;&nbsp; 
+                                    <div class="tableDiv" style="width: 19.2%;">
+                                        <table id="retCvInvoId" style="width: 100%;">
+                                            <tr>
+                                                <th colspan="3">Retailer Invoice Frequency</th>
+                                                <div id="chanInv" class="metricLoader"></div>
+                                            </tr>
+                                            <tr>
+                                                <td>CY</td>
+                                                <td>PY</td>
+                                                <td>YOY Growth</td>
+                                            </tr>
+                                        </table>
+                                    </div>&nbsp;&nbsp;
+                                    <div class="tableDiv" style="width: 19.7%;">
+                                        <table id="retCvcontriId" style="width: 100%;">
+                                            <tr>
+                                                <th colspan="3">% Contribution to Sales</th>
+                                                <div id="chanContri" class="metricLoader"></div>
+                                            </tr>
+                                            <tr>
+                                                <td>CY</td>
+                                                <td>PY</td>
+                                                <td>YOY Growth</td>
+                                            </tr>
+                                        </table>
+                                    </div> 
+                </div>
+                <div class="row" style="    margin: 0px;width: 100%;     margin-right: 0.2%;
+                height: 63.5vh;margin-top: -0.5%;overflow: auto;">
+                        <!-- /** second 3month table in channel view ****************************/ -->
+                    <div class= "cal channel3month">
+                        <div class="channelTable">
+                            <div class="headingbar channelNew">
+                                                            <span> Core & Whales Retailers                                                         </span>
+                                                            <div style="margin-top: -17px;margin-left: 85%;">
+                                                                <div class="dropdown"">
+                                                                    <!-- <a class="dropbtn">...</a> -->
+                                                                    <div class="dropdown-content">
+                                                                        <a onclick='createCommentTableDataCalling()'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                            Comment</a>
+                                                                        <a value="channelviewtableId" onclick='channelRetailerViewShareData(channelviewtableId)'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <!-- <button id="regulCodeCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                                                <i id="regulCodeshowDownload" class="fa fa-download"></i>
+                                                                <i id="regularCodebanDownload" class="fa fa-ban" aria-hidden="true"
+                                                                    style="display: none;color: red;"></i>
+                                                            </button> -->
+                                                        </div>
+                                                            </div>
+
+
+                            <table id='channelviewtableId' class="Channel View"> </table>
+                            <div id="channelLoader" style="display: none; margin-top: 0%;color:#3498db;
+                                                                    font-size: 30px; height: 32%;  margin-left: 38%;">
+                                <i class="fa fa-spinner fa-spin"></i>Loading...
+                            </div>
+
+
+                            <button class="fa fa-caret-left" id="prePagerChannel" onclick='prePageChannelData()'
+                                data-toggle="tooltip" title="Previous" style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                            <button class="fa fa-caret-right" id="nextPagerChannel" onclick='nextPageChannelData()'
+                                data-toggle="tooltip" title="Next" style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                                
+                            </button>
+                        </div>
+                    </div><br/>
+                        <!-- /** second 6month table in channel view ****************************/ -->
+                    <div class= "cal channel6month">
+                        <div class="channelTable">
+                            <div class="headingbar channelNew">
+                                                                <span> Loyal Retailer 
+                                                                </span>
+                                                            <div style="margin-top: -17px;margin-left: 85%;">
+                                                                <div class="dropdown">
+                                                                    <!-- <a class="dropbtn">...</a> -->
+                                                                    <div class="dropdown-content">
+                                                                        <a onclick='createCommentTableDataCalling()'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                            Comment</a>
+                                                                        <a onclick='channelRetailerViewShareData(channelViewTableForSixMontId)'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <!-- <button id="freqCodeCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                                                <i id="frequentCodeshowDownload" class="fa fa-download"></i>
+                                                                <i id="frequentCodebanDownload" class="fa fa-ban" aria-hidden="true"
+                                                                    style="display: none;color: red;"></i>
+                                                            </button> -->
+                                                        </div>
+                                                            </div>
+
+                            <table id='channelViewTableForSixMontId' class="Channel View"> </table>
+                            <div id="channelLoaderSixMon" style="display: none; margin-top: 0%;color:#3498db;
+                            font-size: 30px; height: 32%; margin-left: 38%;">
+                                <i class="fa fa-spinner fa-spin"></i>Loading...
+                            </div>
+
+
+                            <button class="fa fa-caret-left" id="prePagerChannelSixMon" onclick='prePageChannelSixMonData()'
+                                data-toggle="tooltip" title="Previous" style="display:none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                            <button class="fa fa-caret-right" id="nextPagerChannelSixMon"
+                                onclick='nextPageChannelSixMonData()' data-toggle="tooltip" title="Next"
+                                style="display:none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                        </div>
+                    </div><br/>
+                        <!-- /** second 9month table in channel view ****************************/ -->
+                        
+                    <div class= "cal channel9month">
+
+                        <div class="channelTable">
+                            <div class="headingbar channelNew">
+                                                                <span> Promising & Slipping Retailers
+                                                                </span>
+                                                            <div style="margin-top: -17px;margin-left: 85%;">
+                                                                <div class="dropdown">
+                                                                    <!-- <a class="dropbtn">...</a> -->
+                                                                    <div class="dropdown-content">
+                                                                        <a onclick='createCommentTableDataCalling()'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                            Comment</a>
+                                                                        <a onclick='channelRetailerViewShareData(channelViewTableForNineMontId)'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                                                    </div>
+                                                                </div>
+                                                            
+                                                                <!-- <button id="dormCodeCsvDownload" onclick='downloadMethodQueue(this.id)'
+                                                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                                                <i id="dormantCodeshowDownload" class="fa fa-download"></i>
+                                                                <i id="dormantCodebanDownload" class="fa fa-ban" aria-hidden="true"
+                                                                    style="display: none;color: red;"></i>
+                                                            </button> -->
+                                                        </div>
+                                                            </div>
+
+                            <table id='channelViewTableForNineMontId' class="Channel View"> </table>
+                            <div id="channelLoaderNineMon" style="display: none; margin-top: 0%;color:#3498db;
+                            font-size: 30px; height: 32%; margin-left: 38%;">
+                                    <i class="fa fa-spinner fa-spin"></i>Loading...
+                            </div>
+
+
+                            <button class="fa fa-caret-left" id="prePagerChannelNineMon"
+                                onclick='prePageChannelNineMonData()' data-toggle="tooltip" title="Previous"
+                                style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                            <button class="fa fa-caret-right" id="nextPagerChannelNineMon"
+                                onclick='nextPageChannelNineMonData()' data-toggle="tooltip" title="Next"
+                                style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="channelDrillContent" style="display: none;    margin-top: 2px;
+                margin: 0px;
+            max-height: 94vh; width: 99%;">
+                <div class="row chartDiv" style="width: 100%;     margin: 0px;   height: 77vh; font-size: 11px;">
+                    <!-- /** Retailer View Part Group wise Sales table in channel view Drill Down****************************/ -->
+                   <div style="width: 100%;     margin: 1% 0px -3%;height: 10%;" class="row" id="drillheadersChannel">
+                        <div class="col" style="background-color: white;">
+                            <input id="retaileNameForDrill" style="font-size: 14px;
+                            font-weight: 600;" value="Kailash Auto Traders" type="button"></input>
+                        </div>
+                        <div class="col" style="background-color: white;text-align: center;">
+                            <span style="font-size: 14px;
+                            font-weight: 600;">Sales Opportunity : </span>  <input style="border: none; font-size: 14px;
+    font-weight: 600;" id="salesOppert" value="1,07,629" type="button"></input>
+                        </div>
+                        <div class="col" style="background-color: white;text-align: right;">
+                            <input id="backChannelView" style="font-size: 14px;
+                            font-weight: 600;color: white;
+    background-color: black;cursor: pointer;
+    border-radius: 5px;" value="Channel View" class="allButtons" onclick="goBackChannelView()" type="button"></input>
+                        </div>
+                   </div>
+                   
+                   <div class="row" style="    width: 100%;
+                    margin: 0;
+                    height: 40%;">
+                        <div class="col channelTable" style="    background-color: white;">
+                            <div class="headingbar channelNew" style="text-align: left;">
+                            <span style="font-weight: bold;text-align: center;"> Up-Sell Opportunity </span>
+                        <div style="margin-top: -17px;margin-left: 85%;">    
+                            <div class="dropdown">
+                                    <!-- <a class="dropbtn">...</a> -->
+                                        <div class="dropdown-content">
+                                            <a onclick='createCommentTableDataCalling()' style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                            Comment</a>
+                                            <a onclick='channelRetailerViewShareData(partGrouptableId)' style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div> 
+                            </div>
+                        
+                            <!-- <button id="ContactCodeDrillDown" onclick='downloadMethodQueue(this.id)'
+                            style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                            <i id="retailerDrillshowDownload" class="fa fa-download"></i>
+                            <i id="retailerDrillbanDownload" class="fa fa-ban" aria-hidden="true"
+                                style="display: none;color: red;"></i>
+                        </button> -->
+                    </div>
+                            </div>
+                            <div id="PartSpecificLoader" style="    margin-bottom: 0;"></div>
+                                <table id='channelViewDrillSpecific' class="Channel View"> </table>
+                        
+                        </div>
+                    </div>
+                    <div class="row" style="    width: 100%;
+                    margin: 0;
+                    height: 40%;">
+                        <!-- /** Retailer Specific Recommended order table in channel view Drill Down ****************************/ -->
+                        <div class="col channelTable" style=" margin-top: 1%;   background-color: white;">
+                            <div class="headingbar channelNew" style="text-align: left;">
+                            <span style="font-weight: bold;text-align: center; "> Cross-Sell Opportunity 
+                                </span>
+                                <div style="margin-top: -17px;margin-left: 85%;">
+                                <div class="dropdown">
+                                <!-- <a class="dropbtn">...</a> -->
+                                <div class="dropdown-content">
+                                        <a onclick='createCommentTableDataCalling()'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                            Comment</a>
+                                        <a onclick='channelRetailerViewShareData(channelViewDrillSpecific)'
+                                                                            style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                    </div> 
+                                </div>
+                            
+                                <!-- <button id="ContactCodeSpeciDrillDown" onclick='downloadMethodQueue(this.id)'
+                                style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                                <i id="retailerSpecishowDownload" class="fa fa-download"></i>
+                                <i id="retailerSpecibanDownload" class="fa fa-ban" aria-hidden="true"
+                                    style="display: none;color: red;"></i>
+                            </button> -->
+                        </div>
+                            </div>
+                            <div id="partGroupLoader" style="    margin-bottom: 0;"> </div>
+                                <table id='partGrouptableId' style="height: 190px;" class="Channel View"> </table>
+                        </div>
+                     </div>
+                </div>
+            </div>
+
+            <div class="row" id="channelRecomendedDrillContent" style="display: none;    margin-top: 2px;
+            border-style: groove;
+            max-height: 94vh; width: 98%;">
+                <div class="cal chartDiv" style="width: 100%;overflow: auto; font-size: 11px;">
+                    <div class="channelTable" style="text-align: center;margin-bottom: 6px;">
+                        <span><b style="        color: #3d84a6;
+                            font-weight: bold;
+                            font-size: 13px;">Retailer Name : </b> <b id="RNameRec"></b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <!-- /** Retailer Summery table in channel view Drill Down ****************************/ -->
+                    <div class="channelTable">
+                        <div class="headingbar" style="text-align: left;">
+                            <span style=" color: #3d84a6;font-weight: bold;text-align: center; font-size:16px;"> Recommended Part Group wise Sales
+                            </span>
+                        <div style="margin-top: -17px;margin-left: 85%;">
+                                <div class="dropdown">
+                                    <a class="dropbtn">...</a>
+                                    <div class="dropdown-content">
+                                    <a onclick='createCommentTableDataCalling()'
+                                                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                                Comment</a>
+                                    <a onclick='channelRetailerViewShareData(channelViewRecomendDrillSales)'
+                                                                                style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                                </div>
+                            </div>
+                        
+                            <button id="RetailerRecomendDrillSales" onclick='downloadMethodQueue(this.id)'
+                            style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                            <i id="retailRecomshowDownload" class="fa fa-download"></i>
+                            <i id="retailerDrillSalesshowDownload" class="fa fa-ban" aria-hidden="true"
+                                style="display: none;color: red;"></i>
+                        </button>
+                    </div>
+                            </div>
+                        <div class="tableDiv" style="margin-bottom: 0%;" id="partGroupRecomenSaleLoader"></div>
+                        <table id='channelViewRecomendDrillSales' class="Channel View"> </table>
+                        
+
+                        
+                        <button class="fa fa-caret-left" id="prePagerPartSale" onclick='prePartSalesData()'
+                            data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPagerPartSale" onclick='nextPartSalesData()'
+                            data-toggle="tooltip" title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+                    </div>
+
+                    <!-- /** Retailer View Part Group wise Sales table in channel view Drill Down****************************/ -->
+                    <div class="channelTable">
+                        <div class="headingbar" style="text-align: left;">
+                        <span style=" color: #3d84a6;font-weight: bold;text-align: center; font-size:16px;"> Recommended Part wise Order </span>
+                    <div style="margin-top: -17px;margin-left: 85%;">    
+                        <div class="dropdown">
+                                <a class="dropbtn">...</a>
+                                    <div class="dropdown-content">
+                                        <a onclick='createCommentTableDataCalling()' style="    font-size: smaller;color: black;padding: 6px 10px;">Create
+                                                                        Comment</a>
+                                        <a onclick='channelRetailerViewShareData(channelViewRecomendDrillOrders)' style="    font-size: smaller;color: black;padding: 6px 10px;">Share Data</a>
+                            </div> 
+                        </div>
+                    
+                        <button id="retailerOrderDrillDown" onclick='downloadMethodQueue(this.id)'
+                        style="font-size: smaller; color: #007bff;border-color: #007bff;">
+                        <i id="retailerDrillOrderDownload" class="fa fa-download"></i>
+                        <i id="retailerDrillOrderBanDownload" class="fa fa-ban" aria-hidden="true"
+                            style="display: none;color: red;"></i>
+                    </button>
+                </div>
+                        </div>
+                        <div class="tableDiv" id="partGroupRecomenOrderLoader" style="    margin-bottom: 0;"></div>
+                            <table id='channelViewRecomendDrillOrders' class="Channel View"> </table>
+                        
+
+                        <button class="fa fa-caret-left" id="prePagerPartOrder" onclick='prePartOrderData()'
+                            data-toggle="tooltip" title="Previous" style="display: none;color:#1c94c4; font-size:18px;">
+                        </button>
+                        <button class="fa fa-caret-right" id="nextPagerPartOrder" onclick='nextPartOrderData()'
+                            data-toggle="tooltip" title="Next" style="display:none;color:#1c94c4; font-size:18px;">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+        <marquee style="    background-color: black;
+        margin-left: -15.3%;;
+        position: fixed;
+        bottom: 0;
+        color: cornsilk;" width="96.2%" direction="left"
+            id="breakingNew">
+        </marquee>
+        <marquee style="    background-color: black;
+        margin-left: -15.3%;;
+        bottom: 0;
+        position: fixed;
+        color: cornsilk;" width="96.2%" direction="left"
+        id="breakingNews1">
+        </marquee>
+        <marquee style="    background-color: black;
+        margin-left: -15.3%;;
+        position: fixed;
+        bottom: 0;
+        color: cornsilk;" width="96.2%" direction="left"
+                id="breakingNews2">
+        </marquee>
+    
+        <!--*********** dashboard view button  **************************** -->
+        <!-- <div class="row mx-auto" style="width: 77.6%;">
+            <div class="col-md-2">
+                <input id="indiaView" type="button" value="All India View" class="allButtons"></input>&nbsp;
+            </div>
+            <div class="col-md-2">
+                <input id="stateView" type="button" value="State View" class="allButtons"></input>&nbsp;
+            </div>
+            <div class="col-md-2">
+                <input id="disrtiView" type="button" value="Distributor View" class="allButtons"></input>&nbsp;
+            </div> -->
+           <!-- <div class="col-md-2">
+            <input id="retailView" type="button" value="Retailer View" class="allButtons"></input>&nbsp;
+        </div> -->
+        <!--  <div class="col-md-2">
+            <input id="partView" type="button" value="Part View" class="allButtons"></input>&nbsp;
+        </div> --> 
+        <!-- <div class="col-md-2">
+            <input id="channelView" type="button" value="Channel View" class="allButtons"></input>
+        </div>
+            <div class="col-md-2">
+                <input id="perforView" type="button" value="Performance View" class="allButtons"></input>
+            </div>
+        </div> -->
+
+    </div>
+    <div id ="InsightsDiv">
+        <div class="row reportTitleRow">
+            <div class="col-sm-12 reportTitleBar" style="padding: 5px;">
+                <div class="lastRefreshedDateTitle">Last Refreshed (Date) - <span id="lastRefreshedDateIdIn"></span></div>
+
+                <div id="reportTitleId">Repeatability of Sales</div>
+            </div>
+        </div>
+        <!--*********** dashboard filter **************************** -->
+        <div class="row filterRow">
+            <div class="col filterCol" id="yearDivIn" style="    margin-left: -6px;">
+                <div class="filterTitle">Fiscal Year</div>
+                <select name="Year" class="filterIn" id="yearFilterIn"></select>
+            </div>
+            <div class="col filterCol" id="monthDivIn">
+                <div class="filterTitle">Month</div>
+                <select name="Month" class="filterIn" id="monthFilterIn" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="stateDivIn">
+                <div class="filterTitle">State &nbsp;&nbsp;&nbsp;<i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFilIn" style="display: none;">
+                    </div>
+                </div>
+                <select name="State" class="filterIn" id="stateFilterIn"></select>
+            </div>
+            <div class="col filterCol" id="territoryDivIn" style="display: none;">
+                <div class="filterTitle">Territory &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFilIn" style="display: none;">
+                    </div>
+                </div>
+                <select name="Territory" class="filterIn" id="territoryFilterIn" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="distributerDivIn">
+                <div class="filterTitle">Distributor &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
+                        title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
+                        class="loaderFilIn" style="display: none;">
+                    </div>
+                </div>
+                <select name="Distributor" class="filterIn" id="distributorFilterIn" multiple="multiple"></select>
+            </div>
+
+            <div class="col filterCol" id="districtDivIn">
+                <div class="filterTitle">District</div>
+                <select name="district" class="filterIn" id="districtFilterIn" multiple="multiple"></select>
+            </div>
+            <div class="col filterCol" id="partCategoryDivIn" style="display: none;">
+                <!-- partcategory change to part Group -->
+                <div class="filterTitle"> Part Group</div>
+                <select name="Part_Category" class="filterIn" id="partCategoryFilterIn" multiple="multiple"></select>
+            </div>
+
+        </div>
+
+        <div class="insightContent">
+            <div class="row" id="repeatability_Sales" style="display: none;     margin: 0px;   width: 100%;">
+                <div class="row mainContent" id="mainInsights1" style="width: 96%;margin: 0px;">
+                    <div id="repeatableSales" style=" margin: 0px;border: 1px solid #dcdcdc;   width: 99%;
+                    height: 228px"></div>
+                    <div style="    width: 99%;margin: 0px;
+                    height: 280px">
+                        <div class="headingbar" style="    width: 100%;
+                        border: 1px solid #dcdcdc;
+                        background-color: #bcbcbc;
+                        box-sizing: border-box;
+                        font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                        font-weight: 500;
+                        height: 25px;
+                        color: #000000;">
+                            <div class="headerAlian" style="    font-weight: 600;
+                            text-align: center;">
+                                <span class="heading">Repeatability of Sales Table</span>
+                            </div>
+                        </div>
+                    <div style="width: 99%;">
+                        <div id="repeatabilitySalesLoader">
+
+                        </div>
+                        <table border='0' class="repeatSaleTable" id="repeatabilitySales" style="max-width: 1100px;">
+                        </table>
+                    </div>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="retail_Conce_Page" style="display: none; margin: 0;   width: 100%;">
+                <div class="row mainContent" id="mainInsights" style="margin: 0;width: 100%;">
+                    <div class="row" style="width: 100%;margin: 0;">
+                            <div class="row tabularDiv" style="width: 47%; margin: 0; overflow-y: hidden;  height: 200px;">
+                                <div class="headingbar" style="    width: 100%;
+                                border: 1px solid #dcdcdc;
+                                background-color: #bcbcbc;
+                                box-sizing: border-box;
+                                font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                                font-weight: 500;
+                                height: 25px;
+                                color: #000000;">
+                                    <div class="headerAlian" style="    font-weight: 600;
+                                    text-align: center;">
+                                        <span class="heading">Distributor wise Retailer Concentration</span>
+                                    </div>
+                                </div>
+                                <div style="width: 100%;">
+                                    <div id="retailerConcLoader"></div>
+                                    <table id='retailerConc' class="schemewiseTable"> </table>
+                                </div>
+                            </div>&nbsp;&nbsp;
+                            <div class="row tabularDiv" style="width: 48%; overflow-y: hidden; margin: 0;  height: 200px;">
+                                <div class="headingbar" style="    width: 100%;
+                                border: 1px solid #dcdcdc;
+                                background-color: #bcbcbc;
+                                box-sizing: border-box;
+                                font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                                font-weight: 500;
+                                height: 25px;
+                                color: #000000;">
+                                    <div class="headerAlian" style="    font-weight: 600;
+                                    text-align: center;">
+                                        <span class="heading">Corresponding Retailers</span>
+                                    </div>
+                                </div>
+                                <div style="width: 100%;">
+                                    <div id="correRetailerLoader"></div>
+                                    <table id='correRetailer' class="schemewiseTable"> </table>
+                                    <!-- <table border='0' class="schemewiseTable" id="correRetailer" style="width: 100%;">
+                                    </table> -->
+                                </div>
+                            </div>
+                    </div>
+                    <div class="row" style="width: 100%;     margin-left: 0px;
+                    margin-right: 0px;margin-top: 1%;    height: 50vh;">
+                            <div class="row tabularDiv1" style="width:56%;    height: 96%;margin: 0; border: 1px solid #dcdcdc;">
+                                
+                                <div id="retailerConce" style="    width: 100%;
+                                height: 290px;" ></div>
+                            </div>&nbsp;&nbsp;
+                            <div class="row tabularDiv1" style="width:39%;     height: 96%;margin: 0; border: 1px solid #dcdcdc;">
+                                
+                                <div id="retailerperc" style="    width: 100%;
+                                height: 290px;"> </div>
+                            </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="row" id="market_Share_Decline" style="display: none;margin: 0px;    width: 100%;">
+                <div class="row mainContent" id="mainInsights2" style="width: 100%; margin: 0px;">
+                    <div id="markerShareId" style="width: 95%; border: 1px solid #dcdcdc; height: 210px;">
+            
+                    </div>
+                    <div  style="width: 100%;">
+                        <div class="headingbar" style="    width: 95%;
+                        border: 1px solid #dcdcdc;
+                        background-color: #bcbcbc;
+                        box-sizing: border-box;
+                        font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                        font-weight: 500;
+                        height: 25px;
+                        color: #000000;">
+                            <div class="headerAlian" style="font-weight: 600;
+                            font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                            text-align: center;">
+                                <span class="heading">Market Share Decline Table</span>
+                            </div>
+                        </div>
+                        <div style="width: 95%;height: 250px;">
+                            <div id="markerShareItabledLoader"></div>
+                            <table border='0' id="markerShareItabled" style="width: 100%;">
+                            </table>
+                            <button class="fa fa-caret-left" id="prePageMarketShareData"
+                            onclick='prePageMarketShareData()' data-toggle="tooltip" title="Previous"
+                            style="display: none;color: rgb(28, 148, 196);
+                            font-size: 17px;
+                            border-radius: 7px;">
+                            </button>
+                            <button class="fa fa-caret-right" id="nextPageMarketShareData"
+                                onclick='nextPageMarketShareData()' data-toggle="tooltip" title="Next"
+                                style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="market_Share_low" style="display: none; margin: 0px;   width: 100%;">
+                <div class="row mainContent" id="mainInsights3" style="width: 100%; margin: 0px;">
+                    <div id="lowShareId" style="width: 95%;    border: 1px solid rgba(124, 95, 95, 0.3); height: 210px;">
+            
+                    </div>
+                    <div  style="width: 100%;">
+                        <div class="headingbar" style="    width: 95%;
+                        border: 1px solid #dcdcdc;
+                        background-color: #bcbcbc;
+                        box-sizing: border-box;
+                        font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                        font-weight: 500;
+                        height: 25px;
+                        color: #000000;">
+                            <div class="headerAlian" style="    font-weight: 600;
+                            font-family: 'Poppins Medium', 'Poppins Regular', 'Poppins', sans-serif;
+                            text-align: center;">
+                                <span class="heading">Market Share across Sections </span>
+                            </div>
+                        </div>
+                        <div style="width: 95%;height: 250px;">
+                            <div id="lowShareItabledLoader"></div>
+                            <table border='0' id="lowShareItabled" style="width: 100%;">
+                            </table>
+                            <button class="fa fa-caret-left" id="prePageLowMarketShareData"
+                            onclick='prePageLowMarketShareDataIn()' data-toggle="tooltip" title="Previous"
+                            style="display: none;color: rgb(28, 148, 196);
+                            font-size: 17px;
+                            border-radius: 7px;">
+                            </button>
+                            <button class="fa fa-caret-right" id="nextPageLowMarketShareData"
+                                onclick='nextLowPageMarketShareDataIn()' data-toggle="tooltip" title="Next"
+                                style="display: none;color: rgb(28, 148, 196);
+                                font-size: 17px;
+                                border-radius: 7px;">
+                            </button>
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <!--*********** create comment satrt **************************** -->
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <p> shareData</p>
+            <p> Createcomment</p>
+            <button class="close">Close</button> <br><br>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div id="myShareModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4> -->
+                </div>
+                <div class="modal-body">
+                    <p>Loading Please wait .......</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- Modal -->
+<div id="navigateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content" style="    width: 55%;">
+        <div class="modal-header" style="    padding: 8px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <button class="btn" style="width: 100%;" onclick="channelDrilldown()">Retailer Part View</button></br>
+                <button class="btn" style="width: 100%;margin-top: 5px;" onclick="channelRecomendedDrilldown()">Retailer Recommended View</button>
+            </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</body>
+
+<div style="display: none;">
+    <select id="territoryDependantComboId"></select>
+</div>
+<div style="display: none;">
+    <select id="stateDependantComboId"></select>
+</div>
+<div style="display: none;">
+    <select id="monthDependantComboId"></select>
+</div>
+<div style="display: none;">
+    <select id="monthDependantComboIdIn"></select>
+</div>
+<div style="display: none;">
+    <select id="distributorDependantComboId"></select>
+</div>
+
+
+<input style="display: none;" id="companyId">
+<input style="display: none;" id="userId">
+<input style="display: none;" id="dashboardId">
+<input style="display: none;" id="reportTitle">
+
+<input style="display: none;" id="baseURL">
+<input style="display: none;" id="restBaseURL">
+<input style="display: none;" id="chatURL">
+<input style="display: none;" id="allowedEmailDomains">
+
+<style>
+    html,
+    body {
+        min-height: 100%;
+        font-family: Poppins Medium, Poppins Regular, Poppins, sans-serif;
+    }
+ 
+
+    body {
+        height: 100vh;
+    }
+    .metricsValue{
+        color: #0046cc;
+    }
+    .titleNameSp{
+        margin-left: 10px;
+    }
+    .dropdown-toggle btn btn-default{
+        background-color: white;
+    }
+    #reportTitleId{
+        color: white;
+    font-weight: 700;
+    margin-top: 2px;
+    }
+    .sideDiv{
+        overflow-x: hidden;
+        overflow-y: auto;    
+        border-radius: 4px;
+        border: 1px solid rgba(124, 95, 95, 0.3);    
+        height: 95vh;
+        background-color: rgba(223, 223, 223, 0.4);
+        /* margin-top: -6.8%;      */
+        width: 15%;
+        margin-left: 11px;
+    }
+    
+button.multiselect {
+    background-color: white;
+}
+    #digiImg {
+        margin-bottom: 6%;
+        margin-left: 32%;
+    }
+    .mainTl,.mainIns,.mainsubIn,.mainsubIn1,.recommendation{
+        background-color: black;
+        font-family: 'Arial Regular', 'Arial', sans-serif;
+        box-sizing: border-box;
+        font-weight: 600;
+        color: #fff9f9;
+        height: 30px;
+        border-radius: 4px;
+        width: 100%;
+        border: 1px solid rgba(124, 95, 95, 0.3); 
+        font-size: 14px;
+        cursor: pointer;
+        text-align: left;
+        /* margin-top: -11%; */
+        border: 1px solid #797979;
+    }
+    .filterRow,.reportTitleRow  {
+    margin-left: 0%;
+    margin-right: 51px;
+    background-color: rgba(223, 223, 223, 0.4);
+    }
+    .container-fluid,#InsightsDiv {
+    width: 100%;
+    top: 0;
+    margin-left: 16vw;
+    width: 85%;
+    position: absolute;
+}
+    .tableDiv{
+        width: 15.9%;
+        height: 102px;
+        border-radius: 4px;
+        border: 1px solid rgba(124, 95, 95, 0.3);
+        background-color: #ffffff;
+        box-sizing: border-box;
+        font-family: 'Arial Regular', 'Arial', sans-serif;
+        color: #333333;
+        text-align: center;
+        line-height: normal;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.19);
+    }
+    .subTl{
+        border: 1px solid rgba(124, 95, 95, 0.3);
+        background-color: #ffffff;
+        box-sizing: border-box;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: inherit;
+        border-radius: 4px;
+        border: 1px solid rgba(124, 95, 95, 0.3); 
+        width: 100%;
+        height: 30px;;
+    }
+
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 7px solid #3498db;
+        width: 40px;
+        height: 40px;
+        -webkit-animation: spin 2s linear infinite;
+        /* Safari */
+        animation: spin 2s linear infinite;
+        margin-left: 111px;
+        margin-top: 11vw;
+    }
+
+    .loader1 {
+        border: 5px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 7px solid #3498db;
+        width: 40px;
+        height: 40px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        margin-left: 20vw;
+    }
+
+    .loaderFil,.loaderFilIn  {
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #3498db;
+        width: 14px;
+        height: 14px;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+        margin-left: auto;
+    }
+    .multiselect{
+        height: 28px;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    .ui-widget-content {
+        cursor: pointer;
+    }
+    #chartTypes {
+        position: fixed;
+        bottom: 0;
+        /* width: 95%; */
+        margin-bottom: 2.4px;
+        min-height: 20px;
+        background-color: #d8d9da87;
+        text-align: center;
+        padding: 4px;
+    }
+
+    .dataTables_wrapper {
+        /* font-family: tahoma; */
+        font-size: 12px;
+        /* direction: rtl; */
+        position: relative;
+        text-align: left;
+        /* clear: both;
+    *zoom: 1;
+    zoom: 1; */
+    }
+
+    #partviewtableId tr td {
+        height: 8px;
+        width: 30px;
+        text-align: left;
+        padding: 0px 1px 0px 3px;
+        margin: 0px;
+    }
+
+    #partviewtableId1 tr td {
+        height: 8px;
+        width: 30px;
+        text-align: left;
+        padding: 0px 1px 0px 3px;
+        margin: 0px;
+    }
+
+    table.dataTable thead th,
+    table.dataTable thead td {
+        /* padding: 2px; */
+        /* width: 30px; */
+        border-bottom: 1px solid #111;
+    }
+
+    #partdrilltableId_wrapper tr td {
+        height: 8px;
+        width: 30px;
+        text-align: left;
+        padding: 0px 1px 0px 3px;
+        margin: 0px;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    #RetailerviewtableId tr td {
+        /* height: 8px;
+        width: 30px; */
+        text-align: left;
+        padding: 0px 1px 0px 3px;
+        margin: 0px;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    table.dataTable tbody td {
+        word-break: break-word;
+
+    }
+
+
+    #retdrilltableId tr td {
+        height: 8px;
+        width: 30px;
+        text-align: left;
+        padding: 0px 1px 0px 3px;
+        margin: 0px;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    /* #partviewtableId,#partdrilltableId,#partviewtableId1 th {
+        font-size: 10px;
+        height: 10px;
+    } */
+
+    .popup-overlay {
+        /*Hides pop-up when there is no "active" class*/
+        visibility: hidden;
+        position: fixed;
+        background: #ffffff;
+        /* border: 3px solid #666666; */
+        width: 40%;
+        top: 0px;
+        height: 40%;
+        left: 25%;
+    }
+
+
+
+    .popup-overlay.active {
+        /*displays pop-up when "active" class is present*/
+        visibility: visible;
+        text-align: left;
+    }
+
+
+
+    .popup-content {
+        /*Hides pop-up content when there is no "active" class */
+        visibility: hidden;
+    }
+
+
+
+    .popup-content.active {
+        /*Shows pop-up content when "active" class is present */
+        visibility: visible;
+    }
+
+    .specialCss {
+        font-weight: 700;
+    }
+
+    .multiselect-container>li>a>label[title=" Select All "] {
+        font-weight: 700;
+    }
+
+    table.dataTable thead .sorting {
+        background: url('./image/sort_both.png') no-repeat center right;
+    }
+
+    table.dataTable thead .sorting_asc {
+        background: url('./image/sort_asc.png') no-repeat center right;
+    }
+
+    table.dataTable thead .sorting_desc {
+        background: url('./image/sort_desc.png') no-repeat center right;
+    }
+
+    table.dataTable thead .sorting_asc_disabled {
+        background: url('./images/sort_asc_disabled.png') no-repeat center right;
+    }
+
+    table.dataTable thead .sorting_desc_disabled {
+        background: url('./images/sort_desc_disabled.png') no-repeat center right;
+    }
+    .ui-jqgrid .ui-jqgrid-bdiv{
+        overflow-x:hidden;
+    }
+    .ui-slider-horizontal .ui-slider-handle {
+        margin-top: -3px;
+    }
+    .ui-jqgrid {font-family: 'Poppins SemiBold', 'Poppins Regular', 'Poppins', sans-serif; font-size: 12px;}
+    .ui-jqgrid .ui-jqgrid-bdiv tr.ui-row-ltr>td {height: 28px; text-align: center;}
+    .ui-jqgrid .ui-jqgrid-labels th.ui-th-column  {background-color: rgba(223, 223, 223, 0.4); font-size: 12px;height: 22px;   color: #363636;}
+</style>
+
+<script>
+    var stateMeta = '';
+    var idMeta = '';
+    let changeFilter = true;
+    let uncheckFilter = true;
+    let uncheckFilter1 = true;
+    let onloadFunction = true;
+    let retailerNameAppend = false;
+    let callIndOrAnyView = true;
+
+    let stateFilterChanged = false
+    let territoryFilterChanged = false
+    let distriFilterChanged = false
+    let terryFilterUpdate = true;
+    let terryFilAppend = true;
+    let dropSelect = true;
+
+
+    $('#benchView').click(function(){
+        $(".container-fluid").hide();
+        $("#chatbot,#InsightsDiv").hide();
+        $("#breakingNew,#breakingNew1,#breakingNew2").hide();
+        $("#benchView").css('font-weight', 'bold');
+        $("#stateView,#disrtiView,#LMSaherView,#MSCView,#RCView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
+       
+        $("#benchmarrkId").show();
+        if(!$('#iframe').length) {
+                $('#benchmarrkId').html('<iframe id="iframe" src="https://api-uat.digilytics.solutions/bim/api/v1/dashboard/227/report/290" width="80%" style="border:none;" height="100%"></iframe>');
+        }
+    });   
+
+    $('#RoSView').click(function(){
+        $(".container-fluid").hide();
+        $("#benchmarrkId").hide();
+        $('#reportTitleId').text('Repeatability of Sales');
+        $("#retail_Conce_Page").hide();
+        $("#market_Share_low").hide();
+        $("#partCategoryDivIn").hide();
+        $("#repeatability_Sales").show();
+        $("#market_Share_Decline").hide();
+        $("#InsightsDiv").show();
+        $("#chatbot").show();
+        onloadIS = true;
+        $("#breakingNew,#breakingNew1,#breakingNew2").hide();
+        $("#RoSView").css('font-weight', 'bold');
+        $("#stateView,#RCView,#benchView,#LMSaherView,#MSCView,#disrtiView,#channelView,#perforView,#indiaView").css('font-weight', '100');
+        showHideLoaderIn("repeatableSales", true);
+        showHideLoaderIn("repeatabilitySalesLoader", true);
+        repeatableSalesTableChartApi();
+        // callBajajInsightFiltersOptions();
+    });   
+
+    $('#RCView').click(function(){
+        $(".container-fluid").hide();
+        $("#benchmarrkId").hide();
+        $('#reportTitleId').text('Retailer Concentration');
+        $("#repeatability_Sales").hide();
+        $("#market_Share_Decline").hide();
+        $("#market_Share_low").hide();
+        $("#partCategoryDivIn").hide();
+        $("#retail_Conce_Page").show();
+        $("#InsightsDiv").show();
+        $("#chatbot").show();
+        onloadIS = true;
+        $("#breakingNew,#breakingNew1,#breakingNew2").hide();
+        $("#RCView").css('font-weight', 'bold');
+        $("#stateView,#benchView,#MSCView,#LMSaherView,#disrtiView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
+        showHideLoaderIn("retailerConcLoader", true)
+        showHideLoaderIn("correRetailerLoader", true)
+        showHideLoaderIn("retailerConce", true)
+        showHideLoaderIn("retailerperc", true)
+        retailerConcentWiseRetailersApi();
+        // callBajajInsightFiltersOptions();
+    });   
+    
+    $('#MSCView').click(function(){
+        $(".container-fluid").hide();
+        $("#benchmarrkId").hide();
+        $('#reportTitleId').text('Market Share Decline');
+        $("#repeatability_Sales").hide();
+        $("#retail_Conce_Page").hide();
+        $("#market_Share_low").hide();
+        $("#market_Share_Decline").show();
+        $("#partCategoryDivIn").show();
+        $("#InsightsDiv").show();
+        $("#chatbot").show();
+        onloadIS = true;
+        $("#breakingNew,#breakingNew1,#breakingNew2").hide();
+        $("#MSCView").css('font-weight', 'bold');
+        $("#stateView,#RCView,#benchView,#LMSaherView,#disrtiView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
+        showHideLoaderIn("markerShareItabledLoader", true)
+        showHideLoaderIn("markerShareId", true)
+        firstLoad=true;
+        startValue=0;
+        endValue=100;
+        marketShareDeclineChartApi(startValue,endValue);
+        // callBajajInsightFiltersOptions();
+    }); 
+
+
+    $('#LMSaherView').click(function(){
+        $(".container-fluid").hide();
+        $("#benchmarrkId").hide();
+        $('#reportTitleId').text('Low Market Share');
+        $("#repeatability_Sales").hide();
+        $("#retail_Conce_Page").hide();
+        $("#market_Share_Decline").hide();
+        $("#market_Share_low").show();
+        $("#partCategoryDivIn").show();
+        $("#InsightsDiv").show();
+        $("#chatbot").show();
+        onloadIS = true;
+        $("#breakingNew,#breakingNew1,#breakingNew2").hide();
+        $("#LMSaherView").css('font-weight', 'bold');
+        $("#stateView,#RCView,#MSCView,#benchView,#disrtiView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
+        showHideLoaderIn("lowShareItabledLoader", true)
+        showHideLoaderIn("lowShareId", true)
+        oneTimeCall=true;
+        fromValue=0;
+        toValue=100;
+        lowMarketShareTableChartApi(fromValue,toValue);
+    }); 
+
+    setTimeout(function() { 
+        callBajajInsightFiltersOptions();
+     }, 3000);
+
+$('.mainTl').click(function (e) {
+    if(!dropSelect){
+        $("#subView").show();
+        dropSelect = true;
+    }else{
+        $("#subView").hide();
+        dropSelect = false;
+    }
+});
+let insights = true;
+$('.mainIns').click(function (e) {
+    if(insights){
+        $("#subViewIn").show();
+        insights=false
+    }else{
+        $("#subViewIn").hide();
+        insights=true
+    }
+});
+let insights1 = true;
+$('#mrShare').click(function (e) {
+    if(insights1){
+        $("#subViewIn1").show();
+        insights1=false
+    }else{
+        $("#subViewIn1").hide();
+        insights1=true
+    }
+});
+let insight = true;
+$('#distEff').click(function (e) {
+    if(insight){
+        $("#subViewIn2").show();
+        insight=false
+    }else{
+        $("#subViewIn2").hide();
+        insight=true
+    }
+});
+$("#subView,#subViewOfRecomme").hide();
+$("#subView").show();
+let recomend = true;
+$('.recommendation').click(function (e) {
+    if(recomend){
+        $("#subViewOfRecomme").show();//mahesh
+        recomend=false
+    }else{
+        $("#subViewOfRecomme").hide();
+        recomend=true
+    }
+});
+
+$('#recomendView').click(function (e) {
+    retailerId = "1034";
+    currentRetailerName = "Kailash Auto Traders";
+    retailerOpporIn= "74,943";
+    $("#recomendView").css('font-weight', '600');
+    $("#InsightsDiv").hide();
+        $("#channelView").css('font-weight', '400');
+        $("#indiaView,#stateView,#perforView,#LMSaherView,#MSCView,#RCView,#RoSView,#disrtiView,#benchView").css('font-weight', '100');
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId,#breakingNew,#breakingNew1,#breakingNew2").hide();
+        // appInsiteCall();
+        $('#retailernameDiv,#districtDiv,#retailerDiv,#pager7,#retailContent,#partCategoryDiv,#classifictionDiv,#indiaContent,#stateContent,#distriContent,#retdrillContent,#pertContent,#partdrillContent,#perforContent,#breakingNew,#breakingNews1,#breakingNews2').hide();
+        $("#territoryDiv,#distributerDiv,#stateDiv,#channelContent,#drillheadersChannel").show();
+        $("#RetailerviewtableId,#partviewtableId1,#partviewtableId").jqGrid('GridUnload');
+        $("#channelviewYTMtableId,#channelviewtableId,#channelViewTableForSixMontId,#channelViewTableForNineMontId").jqGrid('GridUnload');
+
+    channelDrilldown();
+});
+
+
+$("#InsightsDiv").hide();
+    callIndiaFilterOptionsFirst();
+    function callIndiaFilterOptionsFirst() {
+        callIndiaFilterOptions(); 
+    }
+
+
+    function indiaViewChartLoad() {
+        $("#breakingNew").show();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").hide();
+        $("#InsightsDiv").hide();
+        $("#indiaView").css('font-weight', 'bold');
+        appInsiteCall();
+        $("#indSKU,#indDistri,#indDeal,#indSal,#indPene,#indPot").css('display', 'block');
+        $("#keyMetricsLoader").css('display', 'block');
+        showHideLoader("indPotvsSaleContain", true);
+        showHideLoader("indBranPotenContain", true);
+        showHideLoader("indPartPotenContain", true);
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+        $("#breakingNew").show();
+         
+    
+        indPotentialvsSalesChartApi();
+        potentialDataFromApi();
+        salesDataFromApi();
+        penetrationDataFromApi();
+        indPartPotentialvsSalesChartApi();
+        indbrandWisePoteDataFromApi();
+        breakingNew();
+    }
+
+    function dashboardRefresh() {
+        let currenntView = $('.reportTitle').text()
+        if (currenntView == 'All India View') {
+            $("#territoryDiv").hide();
+            $("#distributerDiv").hide();
+            $("#retailerDiv").hide();
+            $("#districtDiv").hide();
+            $("#retailernameDiv").hide();
+            $("#indSKU,#indDistri,#indDeal,#indSal,#indPene,#indPot").css('display', 'block');
+            $("#keyMetricsLoader").css('display', 'block');
+            showHideLoader("indPotvsSaleContain", true);
+            showHideLoader("indBranPotenContain", true);
+            showHideLoader("indPartPotenContain", true);
+             
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+            indPotentialvsSalesChartApi();
+            potentialDataFromApi();
+            salesDataFromApi();
+            penetrationDataFromApi();
+            indPartPotentialvsSalesChartApi();
+            indbrandWisePoteDataFromApi();
+            breakingNew();
+        } else if (currenntView == 'State View') {
+            $("#stateSKU,#stateRetai,#stateDeal,#statePen,#statePot").css('display', 'block');
+            $("#keyMetricsLoaderState").css('display', 'block');
+            showHideLoader("satPotvsSaleContain", true);
+            showHideLoader("satcatPotenContainId", true);
+            $(".loader").css('margin-top', '7vw');
+            showHideLoader("satRetperform", true);
+            $(".loader").css('margin-top', '7vw');
+            showHideLoader("satTotalTownsContain", true);
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+             
+            statepotentialDataFromApi();
+            statesalesDataFromApi();
+            statePotentialvsSalesChartApi();
+            statecategorychartFromApi();
+            stateTotalTownChartApi();
+            stateretailerchartFromApi();
+            breakingNews1();
+        } else if (currenntView == 'Distributor View') {
+            $("#keyMetricsLoaderDistri").css('display', 'block');
+            $("#distPot,#distSale,#disInv,#distRetai,#distSKU").css('display', 'block');
+            showHideLoader("districtPerfChartContainerId", true);
+            showHideLoader("partcategoryChartContainerId", true);
+            showHideLoader("districtWiseTownReachChartContainerId", true);
+            showHideLoader("RetailerPerfChartContainerId", true);
+            $(".loader").css('margin-top', '5vw');
+            showHideLoader("RetailerPerformanceContainerId", true);
+            $(".loader").css('margin-top', '2vw');
+            showHideLoader("breadthPerfChartContainerId", true);
+            $(".loader").css('margin-top', '2vw');
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+             
+            
+            
+            // $(".loader").css('margin-top', '1vw');
+            distretDataFromApi();
+            distridealDataFromApi();
+            distriPotentialvsSalesChartApi();
+            distriPartPoteSalesChartApi();
+            distriWiseTownChartApi();
+            breakingNews2();
+        } else if (currenntView == 'Retailer View') {
+            $("#keyMetricsLoaderRetai").css('display', 'block');
+             
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+            $("#partviewtableId1").jqGrid('GridUnload');
+            $("#partviewtableId").jqGrid('GridUnload');
+            retailerViewTableCreateApi();
+            retcountDataFromApi();
+            retAvgsaleDataFromApi();
+            retInvoFreqDataFromApi();
+            $("#pager7").show();
+        } else if (currenntView == 'Part View') {
+            $("#keyMetricsLoaderPart").css('display', 'block');
+             
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+            $("#partviewtableId").jqGrid('GridUnload');
+            $("#partviewtableId1").jqGrid('GridUnload');
+            partPotDataFromApi();
+            partPenetDataFromApi();
+            partViewTableCreateApi();
+            partViewSecTableCreateApi();
+        } else if (currenntView == 'Recommended Parts for Retailer') {
+            $("#keyMetricsLoaderPartDrillDown").css('display', 'block');
+            showHideLoader("retdrilltableId", true);
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+
+            retailerViewDrill(partCodeFullScope);
+        } else if (currenntView == 'Recommended Retailers for Selected Part') {
+            $("#keyMetricsLoaderPartDrill").css('display', 'block');
+            showHideLoader("partdrilltableId", true);
+            $("#RetailerviewtableId").jqGrid('GridUnload');
+            partViewDrill(partCodeFullScope1);
+
+        } else if (currenntView == 'Performance View') {
+            $("#keyMetricsLoaderPer").css('display', 'block');
+            showHideLoader("perfChartcontainer", true);
+            $(".loader").css('margin-left', '34vw');
+             //mahesh
+            $("#perToSaMtd,#perToSa,#perSales,#perInvoice,#perSKU").css('display', 'block');
+            perfommtdDataFromApi();
+            perfomytdDataFromApi();
+            perfosaleDataFromApi();
+            perfoinvoDataFromApi();
+            perfoskuDataFromApi();
+            perfSliderDataFromApi()
+
+        } else if (currenntView == 'Channel View') {
+            $("#keyMetricsLoaderRetai").css('display', 'block');
+            $("#chanNoOfRetai,#chanAvgSixMonth,#chanSKU,#chanInv,#chanContri").css('display', 'block');
+            $("#RetailerviewtableId,#partviewtableId1,#partviewtableId").jqGrid('GridUnload');
+            $(".channelLoaderYTM").css('margin-left','0vw')
+           // channelViewYtmTableCreateApi();
+            retCvcountDataFromApi();
+            retCvAvgsaleDataFromApi();
+            retCvInvoFreqDataFromApi();
+            channelViewTableCreateApi();
+            channelViewSixMonTableCreateApi();
+            channelViewNineMonTableCreateApi();
+        }else if(currenntView == 'Up Sell / Cross Sell Opportunities'){
+            $("#breakingNew").hide();
+            $("#breakingNews1").hide();
+            $("#breakingNews2").hide();
+            $("#partGrouptableId").jqGrid('GridUnload');
+            $("#channelViewDrillSpecific").jqGrid('GridUnload');
+            showHideLoader("partGroupLoader", true);
+            showHideLoader("PartSpecificLoader", true);
+            partGroupDataFromApi(retailerId);
+            partSpecificDataFromApi(retailerId);
+        }
+    }
+
+
+    $('#indiaView').click(function (e) {
+        $('.reportTitle').text('All India View');
+        appInsiteCall();
+        $("#InsightsDiv,#drillheadersChannel").hide();
+        $(".container-fluid").show();
+        $("#indiaView").css('font-weight', 'bold');
+        $("#stateView,#disrtiView,#LMSaherView,#MSCView,#recomendView,#RCView,#RoSView,#channelView,#perforView,#benchView").css('font-weight', '100');
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+         
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#retailerDiv").show();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        $("#stateDiv").show();
+        $("#classifictionDiv").show();
+        $('#retailernameDiv').hide();
+        $('#channelDrillContent').hide();
+        $('#districtDiv').hide();
+        $('#territoryDiv').hide();
+        $('#distributerDiv').hide();
+        $('#retailerDiv').hide();
+        $('#channelContent').hide();
+        $("#indiaContent").show();
+        $("#stateContent").hide();
+        $("#distriContent").hide();
+        $("#retailContent").hide();
+        $("#retdrillContent").hide();
+        $("#pertContent").hide();
+        $("#partdrillContent").hide();
+        $("#perforContent").hide();
+        $("#breakingNew").show();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").hide();
+        $("#keyMetricsLoader").css('display', 'block');
+        showHideLoader("indPotvsSaleContain", true);
+        showHideLoader("indBranPotenContain", true);
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+
+        filterPageWiseShowing(this.id);
+    });
+    $('#stateView').click(function (e) {
+        $('.reportTitle').text('State View');
+        $("#InsightsDiv,#drillheadersChannel").hide();
+        $("#stateView").css('font-weight', 'bold');
+        $("#indiaView,#disrtiView,#channelView,#LMSaherView,#recomendView,#MSCView,#RCView,#RoSView,#perforView,#benchView").css('font-weight', '100');
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        appInsiteCall();
+        $('#retailernameDiv').hide();
+        $('#districtDiv').hide();
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#retailerDiv").hide();
+        $('#channelDrillContent').hide();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        $("#classifictionDiv").show();
+        $("#stateDiv").show();
+        $("#indiaContent").hide();
+        $("#stateContent").show();
+        $("#distriContent").hide();
+        $("#retailContent").hide();
+        $("#retdrillContent").hide();
+        $("#pertContent").hide();
+        $("#partdrillContent").hide();
+        $("#perforContent").hide();
+        $('#channelContent').hide();
+        $("#breakingNew").hide();
+        $("#breakingNews1").show();
+        $("#breakingNews2").hide();
+        $("#keyMetricsLoaderState").css('display', 'block');
+        showHideLoader("satPotvsSaleContain", true);
+        showHideLoader("satcatPotenContainId", true);
+        $(".loader").css('margin-top', '7vw');
+        showHideLoader("satRetperform", true);
+        showHideLoader("satTotalTownsContain", true);
+        $(".loader").css('margin-top', '7vw');
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+        filterPageWiseShowing(this.id);
+
+    });
+    $('#disrtiView').click(function (e) {
+        $('.reportTitle').text('Distributor View');
+        $("#InsightsDiv,#drillheadersChannel").hide();
+        $("#disrtiView").css('font-weight', 'bold');
+        $("#indiaView,#stateView,#channelView,#LMSaherView,#recomendView,#MSCView,#RCView,#RoSView,#perforView,#benchView").css('font-weight', '100');
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        appInsiteCall();
+        $('#retailernameDiv').hide();
+        $('#districtDiv').hide();
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#retailerDiv").hide();
+        $('#channelDrillContent').hide();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        $("#stateDiv").show();
+        $("#classifictionDiv").show();
+
+        $("#indiaContent").hide();
+        $("#stateContent").hide();
+        $("#distriContent").show();
+        $("#retailContent").hide();
+        $("#retdrillContent").hide();
+        $("#pertContent").hide();
+        $("#partdrillContent").hide();
+        $("#perforContent").hide();
+        $('#channelContent').hide();
+        $("#breakingNew").hide();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").show();
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+        $("#keyMetricsLoaderDistri").css('display', 'block');
+        showHideLoader("districtPerfChartContainerId", true);
+        showHideLoader("partcategoryChartContainerId", true);
+
+        showHideLoader("RetailerPerfChartContainerId", true);
+        $(".loader").css('margin-top', '5vw');
+        showHideLoader("RetailerPerformanceContainerId", true);
+        $(".loader").css('margin-top', '2vw');
+        showHideLoader("breadthPerfChartContainerId", true);
+        $(".loader").css('margin-top', '2vw');
+        filterPageWiseShowing(this.id);
+
+    });
+    $('#retailView, #retailView1').click(function (e) {
+        $('.reportTitle').text('Retailer View');
+         
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId,#drillheadersChannel").hide();
+        appInsiteCall();
+        $('#retailernameDiv').hide();
+        $('#districtDiv').hide();
+        $("#retailerDiv").show();
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        $("#stateDiv").show();
+        $("#classifictionDiv").show();
+        $("#indiaContent").hide();
+        $("#stateContent").hide();
+        $("#distriContent").hide();
+        $("#retailContent").show();
+        $("#retdrillContent").hide();
+        $("#pertContent").hide();
+        $("#partdrillContent").hide();
+        $("#perforContent").hide();
+        $('#channelContent').hide();
+        $("#breakingNew").hide();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").hide();
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+        $("#partviewtableId1").jqGrid('GridUnload');
+        $("#partviewtableId").jqGrid('GridUnload');
+        $("#keyMetricsLoaderRetai").css('display', 'block');
+        $("#pager7").show();
+        if (this.id == "retailView1") {
+            onloadFunction = false;
+            filterRetailerReset();
+        } else {
+            filterPageWiseShowing(this.id);
+
+        }
+    });
+    $('#partView,#partView1').click(function (e) {
+        $('.reportTitle').text('Part View');
+         
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        appInsiteCall();
+        $('#retailernameDiv').hide();
+        $('#districtDiv').hide();
+        $("#retailerDiv").hide();
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        $("#stateDiv").show();
+        $("#classifictionDiv").show();
+        $("#indiaContent").hide();
+        $("#stateContent").hide();
+        $("#distriContent").hide();
+        $("#retailContent").hide();
+        $("#retdrillContent").hide();
+        $("#pertContent").show();
+        $("#partdrillContent").hide();
+        $("#perforContent").hide();
+        $("#breakingNew").hide();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").hide();
+        $("#keyMetricsLoaderPart").css('display', 'block');
+        $("#RetailerviewtableId").jqGrid('GridUnload');
+        $("#partviewtableId1").jqGrid('GridUnload');
+        $("#partviewtableId").jqGrid('GridUnload');
+
+        if (this.id == "partView1") {
+            onloadFunction = false;
+            filterPartCodeReset();
+        } else {
+            filterPageWiseShowing(this.id);
+
+        }
+    });
+    $('#perforView').click(function (e) {
+         
+        $('.reportTitle').text('Performance View');
+        $("#perforView").css('font-weight', 'bold');
+        $("#InsightsDiv,#drillheadersChannel").hide();
+        $("#indiaView,#stateView,#channelView,#LMSaherView,#recomendView,#MSCView,#RCView,#RoSView,#disrtiView,#benchView").css('font-weight', '100');
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        appInsiteCall();
+        $('#retailernameDiv').hide();
+        $('#districtDiv').hide();
+        $("#retailerDiv").hide();
+        $('#channelDrillContent').hide();
+        $("#territoryDiv").show();
+        $("#distributerDiv").show();
+        $("#yearDiv").show();
+        $("#monthDiv").show();
+        $("#partCategoryDiv").show();
+        
+        $("#stateDiv").show();
+        $("#classifictionDiv").show();
+
+        $("#indiaContent").hide();
+        $("#stateContent").hide();
+        $("#distriContent").hide();
+        $("#retailContent").hide();
+        $("#retdrillContent").hide();
+        $("#pertContent").hide();
+        $("#partdrillContent").hide();
+        $("#perforContent").show();
+        $('#channelContent').hide();
+        $("#breakingNew").hide();
+        $("#breakingNews1").hide();
+        $("#breakingNews2").hide();
+        $("#keyMetricsLoaderPer").css('display', 'block');
+        showHideLoader("perfChartcontainer", true)
+        $(".loader").css('margin-left', '34vw');
+        filterPageWiseShowing(this.id);
+
+    });
+    $('#channelView').click(function (e) {
+        $('.reportTitle').text('Channel View');
+        $("#InsightsDiv,#drillheadersChannel,#channelDrillContent").hide();
+        $("#channelView").css('font-weight', 'bold');
+        $("#indiaView,#stateView,#perforView,#LMSaherView,#recomendView,#MSCView,#RCView,#RoSView,#disrtiView,#benchView").css('font-weight', '100');
+        // $(".container-fluid").css(  "margin-top", "-43.7vw")
+        $(".container-fluid").show();
+        $("#chatbot").show();
+        $("#benchmarrkId").hide();
+        appInsiteCall();
+        $('#retailernameDiv,#districtDiv,#retailerDiv,#pager7,#retailContent,#partCategoryDiv,#classifictionDiv,#indiaContent,#stateContent,#distriContent,#retdrillContent,#pertContent,#partdrillContent,#perforContent,#breakingNew,#breakingNews1,#breakingNews2').hide();
+        $("#territoryDiv,#yearDiv,#monthDiv,#distributerDiv,#stateDiv,#channelContent").show();
+        $("#RetailerviewtableId,#partviewtableId1,#partviewtableId").jqGrid('GridUnload');
+        $("#channelviewYTMtableId,#channelviewtableId,#channelViewTableForSixMontId,#channelViewTableForNineMontId").jqGrid('GridUnload');
+
+        filterChannelViewPage(this.id);
+
+    });
+
+
+    
+    function numberAvgFormatter(numberAvg) {
+        var FY19 = $("#yearFilter").val();
+        if(FY19 == "FY19-20" && (numberAvg == null || numberAvg == 0 || numberAvg == 100)){
+            return "NA";
+        }else if (numberAvg == null) {
+            return 0;
+        }
+        return parseFloat(numberAvg).toFixed(1);
+    }
+
+    //Colour Change
+    function addClassColor(num) {
+        if (isNaN(num)) {
+            return "";
+        }
+        return num > 0 ? 'uplift' : num < 0 ? 'downlift' : 'equalLift';
+
+    }
+
+
+    function numberFormatter(num) {
+        num = parseFloat(num);
+        var FY19 = $("#yearFilter").val();
+        if(FY19 == "FY19-20" && (num == null || isNaN(num)|| num== 0 || num == 100)){
+            return "NA";    
+        }else if (isNaN(num)) {
+            //return "NA";
+            return 0;
+        }else if (num == null) {
+            return 0;
+        }
+
+        if (num / 10000000 >= 1) {
+            return getnum(num / 10000000) + " Cr";
+        } else if (num / 100000 >= 1) {
+            return getnum(num / 100000) + " L";
+        } else if (num / 1000 >= 1) {
+            return getnum(num / 1000) + " K";
+        } else {
+            return getnum(num);
+        }
+
+        function getnum(calcNum) {
+            let temp = calcNum.toFixed(1);
+            return (new Intl.NumberFormat('en-IN').format(temp));
+
+        }
+    }
+
+
+    function getnumFormatterRupe(value) {
+        let indianrupee = parseInt(value * 1);
+        return (new Intl.NumberFormat('en-IN').format(indianrupee))
+    }
+
+    function showHideLoader(containerId, display) {
+        if (display) {
+            $("#" + containerId).empty();
+            $("#" + containerId).append("<div class='loader'></div>");
+        } else {
+            $("#" + containerId).find('div[class="loader"]').remove();
+        }
+    }
+
+    function valueFormater(value) {
+        var FY19 = $("#yearFilter").val();
+        if(FY19 == "FY19-20" && (value == null || isNaN(value)|| value== 0 || value == 100)){
+            return "NA";    
+        }
+        return value != null ? parseInt(value) : 0;
+    }
+
+    $(document).ready(function () {
+        // breakingNew();
+        // getLastRefreshedDate();
+    });
+  
+
+
+
+    function sharedFormatter(num) {
+        if (num == null) {
+            return 0;
+        }
+        return parseFloat(num).toFixed(2);
+    }
+
+// tooltip for download count status
+    $('#countId').tooltip({
+        delay :400,
+        placement: "left",
+        title:csvDownloasName,
+        html:true
+    });
+
+   
+    
+</script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+    
+</script>
+</script>
+
+
+
+</html>
