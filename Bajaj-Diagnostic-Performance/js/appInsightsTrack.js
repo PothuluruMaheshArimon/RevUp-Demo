@@ -102,14 +102,14 @@ function appInsiteTimeTrackingClose() {
 
 // this method used in filter event  
 function filterAppInsiteCall(filterValue, filter_Name) {
-    trackCustomEvent('Filter Changed', {
-        "companyId": companyId.toString(),
-        "userId": userId.toString(),
-        "dashboardId": dashboardId.toString(),
-        "reportName": $('.reportTitle').text(),
-        "filterName": filter_Name,
-        "filterValue": filterValue
-    });
+    // trackCustomEvent('Filter Changed', {
+    //     "companyId": companyId.toString(),
+    //     "userId": userId.toString(),
+    //     "dashboardId": dashboardId.toString(),
+    //     "reportName": $('.reportTitle').text(),
+    //     "filterName": filter_Name,
+    //     "filterValue": filterValue
+    // });
 }
 //sent payload to parent iframe
 function sendMsgtoParent(payload) {
@@ -119,13 +119,13 @@ function sendMsgtoParent(payload) {
 
 //payload send to app insight
 function createPayload(vieName){
-    let properties = {
-        "companyId": companyId.toString(),
-        "userId": userId.toString(),
-        "dashboardId": dashboardId.toString(),
-        "reportName": vieName 
-    };
-    return properties;
+    // let properties = {
+    //     "companyId": companyId.toString(),
+    //     "userId": userId.toString(),
+    //     "dashboardId": dashboardId.toString(),
+    //     "reportName": vieName 
+    // };
+    return "properties";
 }
 // when user click csv download button 
 function csvDownloadClickTrack(tableName){    

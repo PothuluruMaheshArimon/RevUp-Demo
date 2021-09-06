@@ -3,7 +3,7 @@ function getApiDomain() {
     let host = window.location.host.toLowerCase();
     host = host.replace("www.", "");
     if (host == "" || host.indexOf('localhost') !== -1) {
-        return "https://api-uat.digilytics.solutions/reporting-service/api/v1/227/chart/data?isRoleBased=true";
+        return "https://api-uat.digilytics.solutions/reporting-service/api/v1/235/chart/data?isRoleBased=true";
     }
     var currentLocation1 = window.location.href;
     var matches = currentLocation1.split("/");

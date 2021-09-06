@@ -314,7 +314,7 @@ let options = {
                                 } else {
                                     y_value = points[index].y;
                                 }
-                                if(points[index].series.name =="Penetration"){
+                                if(points[index].series.name =="Market Share"){
                                     tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                                 }else{
                                     tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -346,7 +346,7 @@ let options = {
                         enabled: false
                     },
                     series: [{
-                        name: 'Potential',
+                        name: 'Addressability',
                        color:'#118DFF',
                         data: PotentialData
                     }, {
@@ -355,7 +355,7 @@ let options = {
                         data: SaleData
                     },{
                         showInLegend: false, 
-                        name: 'Penetration',
+                        name: 'Market Share',
                             color:'#E1C233',
                             data: PenetrData
     
@@ -623,7 +623,7 @@ function distriPartPoteSalesChart(data) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -661,7 +661,7 @@ function distriPartPoteSalesChart(data) {
             color: '#118DFF',
             data: GAPData
         }, {
-            name: 'Potential',
+            name: 'Addressability',
             color: '#12239E',
             data: PotentialData
         }, {

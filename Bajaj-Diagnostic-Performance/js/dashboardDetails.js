@@ -57,7 +57,7 @@ function getDashboardApiDomain() {
     let host = window.location.host.toLowerCase();
     host = host.replace("www.", "");
     if (host == "" || host.indexOf('localhost') !== -1) {
-        return "https://api-uat.digilytics.solutions/bim/api/v1/91/dashboard-embed-details/dashboard-info/191";
+        return "https://api-uat.digilytics.solutions/bim/api/v1/235/dashboard-embed-details/dashboard-info/292";
     }
 
     //let companyId = $("#companyId").val();

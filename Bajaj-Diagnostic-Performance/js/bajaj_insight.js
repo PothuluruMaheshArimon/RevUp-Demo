@@ -1,5 +1,6 @@
 
 let onloadIS = false;
+let top50Distri =[];
   function showHideLoaderIn(containerId, display) {
       if (display) {
           $("#" + containerId).empty();
@@ -12,55 +13,56 @@ let onloadIS = false;
 
   $(document).on('click', '#filterInCha', function () {
     preSelectedFilterArrayIn = [];
-    pupulatingAllFilterIn();
+    callBajajInsightFiltersOptions();
     $(".loaderFilIn").css("display", "block");
 });
 
   //--------Sales -----------------//
-
+let distrinDataObj;
   function callBajajInsightFiltersOptions() {
-    let filterData = insightYearData;
-    $("#monthDependantComboIdIn").empty();
-    $("#monthFilterIn").empty();
-    $("#yearFilterIn").empty();
-    let yearIndex;
-    let yearUniqArr = [];
-    let firstYearVal = filterData[0].length > 0 ? filterData[0][filterData[0].length - 1].FiscalYear : "";
-    for (let i = 0, yearArr = filterData[0]; i < yearArr.length; i++) {
-        let selected = '';
-        yearIndex = yearUniqArr.findIndex(obj => obj.FiscalYear == yearArr[i].FiscalYear);
-        if (yearIndex == -1) {
-            yearUniqArr.push({ Fiscal_Year_Full: yearArr[i].Fiscal_Year_Full, FiscalYear: yearArr[i].FiscalYear });
-        }
-        $("#monthDependantComboIdIn").append("<option class='" + yearArr[i].FiscalYear + "' value='" + (yearArr[i].Month_Name).trim() + "'>" + (yearArr[i].Month_Name).trim() + "</option>")
-        selected = "";
-        var d = new Date();
-      //  var n = d.getMonth() - 1;
-        if (i == filterData[0].length -2) {
-            selected = "selected";
-        }
-        if (firstYearVal == yearArr[i].FiscalYear) {
-            $("#monthFilterIn").append("<option value='" + (yearArr[i].Month_Name).trim() + "' " + selected + ">" + (yearArr[i].Month_Name).trim() + "</option>")
-        }
+    if (distrinDataObj) {
+        distrinDataObj.abort();
+        distrinDataObj = null;
     }
-    $('#monthFilterIn').multiselect({
-        allSelectedText: 'All',
-        numberDisplayed: 1,
-        nonSelectedText: 'All',
-        includeSelectAllOption: true,
-        enableFiltering: true,
-        enableCaseInsensitiveFiltering: true
+    let yearData = "FY19-20";
+    let monthDataNum = "March";
+    let yearMonth = [];
+    let procedureName;
+    preSelectedFilterArrayIn = [];
+    let title = $("#reportTitleId").text();
+    if(title == "Low Market Share"){
+      procedureName  = "Market_Share_Details_DistributorList";
+    }else if(title == "Market Share Decline"){
+        procedureName  = "Market_Share_Decline_DistributorList";
+    }else if(title == "Retailer Concentration"){
+        procedureName  = "Retailer_Concentration_DistributorList";
+    }else {
+        procedureName  = "Repeatability_Of_Sales_FistributorList";
+    }
+    yearMonth.push({ dataType: "String", key: 'Year', value: yearData.toString() });
+    yearMonth.push({ dataType: "String", key: 'Month', value: monthDataNum.toString() });
+    yearMonth.push({ dataType: "String", key: 'State', value: "MADHYA PRADESH" });
+    yearMonth.push({ dataType: "String", key: 'uid', value: Math.floor(Math.random()*(999-100+1)+100).toString() });
+    distrinDataObj = $.ajax({
+        url: getApiDomain(),
+        type: "POST",
+        data: JSON.stringify({ 'filter': procedureName, 'chartDataForms': yearMonth }),
+        success: (function (data) {
+            let filterData = data.data.data[0];
+            distrinDataObj = null;
+            top50Distri =[];
+            let distributersList =''
+            for(let i=0; i<filterData.length;i++){
+                top50Distri.push(filterData[i].DistributorID);
+                distributersList=distributersList+filterData[i].DistributorID+',';
+            }
+            pupulatingAllFilterIn();
+        }),
+        error: (function (err) {
+            console.log(err);
+            distrinDataObj = null;
+        })
     });
-    //YEAR SELECT
-    for (let i = 0; i < yearUniqArr.length; i++) {
-        let selected = '';
-       // if (yearUniqArr[i].FiscalYear == "FY20-21") {
-        if (i == yearUniqArr.length -1) {
-            selected = "selected";
-        }
-        $("#yearFilterIn").append("<option " + selected + " value='" + yearUniqArr[i].FiscalYear + "'>" + yearUniqArr[i].FiscalYear + "</option>")
-    }
-    pupulatingAllFilterIn();
          
 }
 
@@ -70,12 +72,13 @@ function pupulatingAllFilterIn() {
         yearMonthInDataObj.abort();
         yearMonthInDataObj = null;
     }
-    let yearData = $("#yearFilterIn").val();
-    let monthDataNum = $("#monthFilterIn").val();
+    let yearData = "FY19-20";
+    let monthDataNum = "March";
     let yearMonth = [];
     yearMonth.push({ dataType: "String", key: 'Year', value: yearData.toString() });
     yearMonth.push({ dataType: "String", key: 'Month', value: monthDataNum.toString() });
-    yearMonth.push({ dataType: "String", key: 'State', value: "MADHYA PRADESH".toString() });
+    yearMonth.push({ dataType: "String", key: 'State', value: "MADHYA PRADESH" });
+   // yearMonth.push({ dataType: "String", key: 'distributorId', value: filterData.toString() });
     if (stateMeta != '') {
         yearMonth.push({ dataType: "String", key: 'State', value: stateMeta.toString() });
         storeSelectedFilter(stateMeta.toString(), "stateFilterIn");
@@ -214,7 +217,7 @@ function populateFilterInCombo(filterData, filterName) {
                 selected='';
             }
         }
-
+            if(top50Distri.includes(distributorUniqArr[i].Distri_Code))//mahesh
             $("#distributorFilterIn").append("<option value='" + distributorUniqArr[i].Distri_Code + "' " + selected + " >" + distributorUniqArr[i].Distributor + "</option>");
           
         }
@@ -234,43 +237,6 @@ function populateFilterInCombo(filterData, filterName) {
         });
         
     }
-
-    //state
-    // if (filterName != "stateFilterIn" && filterData[0] != undefined) {
-    //     $("#stateFilterIn").empty();
-    //     const getStateIndex = preSelectedFilterArrayIn.findIndex(obj => obj.filterName == "stateFilterIn");
-    //     let getStateFilterValue = getStateIndex != -1 ? preSelectedFilterArrayIn[getStateIndex].filterValue : '';
-    //     for (let i = 0, temp = filterData[0]; i < temp.length; i++) {
-    //         let selected = '';
-    //         // if (getStateIndex == -1 && getStateFilterValue == '') {
-    //         //     selected = 'selected';
-    //         // } else if (getStateFilterValue.includes(temp[i].State)) {
-    //         //     selected = 'selected';
-    //         // }
-
-    //         // if(drillDownBack){
-    //         //     if(temp[i].State == preSelecetedOfState[0]){
-    //         //         selected = 'selected';
-    //         //     }else{
-    //         //         selected='';
-    //         //     }
-    //         // }
-    //         if(temp[i].State == "MADHYA PRADESH"){
-    //             selected="selected";
-    //         }
-
-    //         $("#stateFilterIn").append("<option value='" + temp[i].State + "' " + selected + " >" + temp[i].State + "</option>");
-    //     }
-    //     // $("#stateFilterIn").multiselect('destroy');
-    //     // $('#stateFilterIn').multiselect({
-    //     //     allSelectedText: 'All',
-    //     //     numberDisplayed: 1,
-    //     //     nonSelectedText: 'All',
-    //     //     includeSelectAllOption: true,
-    //     //     enableFiltering: true,
-    //     //     enableCaseInsensitiveFiltering: true
-    //     // });
-    // }
 
     //Territory
     if (filterName != "territoryFilterIn" && filterData[2] != undefined) {
@@ -396,8 +362,8 @@ function populateFilterInCombo(filterData, filterName) {
 }
 function createInsightFilterData() {
     allIndiaFilterData = [];
-    let yearData = $("#yearFilterIn").val();
-    let monthDataNum = $("#monthFilterIn").val();
+    let yearData = "FY19-20";
+    let monthDataNum = "March";
     let stateData = $("#stateFilterIn").val();
     let distriData = $("#distributorFilterIn").val();
     var notSelected = $("#distributorFilterIn").find('option').not(':selected');
@@ -424,16 +390,67 @@ function createInsightFilterData() {
     allIndiaFilterData.push({ dataType: "String", key: 'uid', value: Math.floor(Math.random()*(999-100+1)+100).toString() });
     return allIndiaFilterData;
 }
+function createInsightFilterDataIN(filter_Name) {
+    allIndiaFilterData = [];
+    let yearData = "FY19-20";
+    let monthDataNum = "March";
+    let stateData = $("#stateFilterIn").val();
+    let distriData = $("#distributorFilterIn").val();
+    var notSelected = $("#distributorFilterIn").find('option').not(':selected');
+    var arrayOfUnselected = notSelected.map(function () {
+        return this.value;
+    }).get();
+    if (arrayOfUnselected.length == 0) {
+        distriData = "";
+    }
+
+    let districtData = $("#districtFilterIn").val();
+    var notSelected3 = $("#districtFilterIn").find('option').not(':selected');
+    var arrayOfUnselected = notSelected3.map(function () {
+        return this.value;
+    }).get();
+    if (arrayOfUnselected.length == 0) {
+        districtData = "";
+    }
+    allIndiaFilterData.push({ dataType: "String", key: 'Year', value: yearData.toString() });
+    allIndiaFilterData.push({ dataType: "String", key: 'Month', value: monthDataNum.toString() });
+    allIndiaFilterData.push({ dataType: "String", key: 'State', value: stateData.toString() });
+     //allIndiaFilterData.push({ dataType: "String", key: 'distributorId', value: distriData.toString() });
+     if(filter_Name != "stateFilterIn")
+    allIndiaFilterData.push({ dataType: "String", key: 'District', value: districtData.toString() });
+    allIndiaFilterData.push({ dataType: "String", key: 'uid', value: Math.floor(Math.random()*(999-100+1)+100).toString() });
+    return allIndiaFilterData;
+}
 
 $(document).on("change", ".filterIn", debounce(function () {
-
-
-
     let filter_Name = this.id;
     let filterValue = $(this).val();
 
+    let titleCurr = $("#reportTitleId").text();
+    if(titleCurr == "Retailer Concentration"){
+        showHideLoaderIn("retailerConcLoader", true);
+        showHideLoaderIn("correRetailerLoader", true);
+        showHideLoaderIn("retailerConce", true);
+        showHideLoaderIn("retailerperc", true);
+        $("#retailerConc,#correRetailer").jqGrid('GridUnload');
+        $("#retailerConc,#correRetailer").empty();
+    }else if(titleCurr == "Repeatability of Sales"){
+        showHideLoaderIn("repeatableSales", true);
+        showHideLoaderIn("repeatabilitySalesLoader", true);
+        $("#repeatabilitySales").jqGrid('GridUnload');
+        $("#repeatabilitySales").empty();
+    }else if(titleCurr == "Market Share Decline"){
+        showHideLoaderIn("markerShareItabledLoader", true);
+        showHideLoaderIn("markerShareId", true);
+        $("#markerShareItabled").jqGrid('GridUnload');
+        $("#markerShareItabled").empty();
+    }else if(titleCurr == "Low Market Share"){
+        showHideLoaderIn("lowShareItabledLoader", true);
+        showHideLoaderIn("lowShareId", true);
+        $("#lowShareItabled").jqGrid('GridUnload');
+        $("#lowShareItabled").empty();
+    }
     filtterSelectedIn(filterValue, filter_Name);
-
 },global_debounceTime));
 
 let preSelectedFilterArrayIn = [];
@@ -480,9 +497,81 @@ function storeSelectedFilterIn(filterValue, filter_Name) {
 function filtterSelectedIn(filterValue, filter_Name){
     storeSelectedFilterIn(filterValue, filter_Name);
 
-    let yearData = $("#yearFilterIn").val();
-    let monthDataNum = $("#monthFilterIn").val();
+    let yearData = "FY19-20";
+    let monthDataNum = "March";
     let selectedFilter = [];
+    let distriButer;
+    if(filter_Name != "distributorFilterIn"){
+        if (distriButer) {
+            distriButer.abort();
+            distriButer = null;
+        }
+        let yearData = "FY19-20";
+        let monthDataNum = "March";
+        let yearMonth = [];
+        let procedureName;
+        let districtName;
+        let partClass;
+        yearMonth = createInsightFilterDataIN(filter_Name);
+      //  preSelectedFilterArrayIn = [];
+      let patCata = $("#partCategoryFilterIn").val();
+      var notSelected = $("#partCategoryFilterIn").find('option').not(':selected');
+      var arrayOfUnselected = notSelected.map(function () {
+          return this.value;
+      }).get();
+      if (arrayOfUnselected.length == 0) {
+          patCata = "";
+      }
+        let title = $("#reportTitleId").text();
+        if(title == "Low Market Share"){
+          procedureName  = "Market_Share_Details_DistributorList";
+          districtName = $("#districtFilterIn").val();
+        //  partClass = $("#partCategoryFilterIn").val();
+       //   yearMonth.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
+       //   yearMonth.push({ dataType: "String", key: 'District', value: districtName.toString() });
+        }else if(title == "Market Share Decline"){
+            procedureName  = "Market_Share_Decline_DistributorList";
+            districtName = $("#districtFilterIn").val();
+            partClass = $("#partCategoryFilterIn").val();
+        //    yearMonth.push({ dataType: "String", key: 'District', value: districtName.toString() });
+        //    yearMonth.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
+        }else if(title == "Retailer Concentration"){
+            procedureName  = "Retailer_Concentration_DistributorList";
+            districtName = $("#districtFilterIn").val();
+         //   yearMonth.push({ dataType: "String", key: 'District', value: districtName.toString() });
+        }else {
+            procedureName  = "Repeatability_Of_Sales_FistributorList";
+            districtName = $("#districtFilterIn").val();
+           // yearMonth.push({ dataType: "String", key: 'District', value: districtName.toString() });
+        }
+         distriButer = $.ajax({
+            url: getApiDomain(),
+            type: "POST",
+            data: JSON.stringify({ 'filter': procedureName, 'chartDataForms': yearMonth }),
+            success: (function (data) {
+                let filterData = data.data.data[0];
+                distriButer = null;
+                top50Distri = [];
+                let distributersList =''
+                for(let i=0; i<filterData.length;i++){
+                    top50Distri.push(filterData[i].DistributorID);
+                    distributersList=distributersList+filterData[i].DistributorID+',';
+                }
+                selectedFilter.push({ dataType: "String", key: 'distributorId', value: distributersList.toString() })
+               distFilterFunction(yearData,monthDataNum,selectedFilter,filter_Name);
+               
+            }),
+            error: (function (err) {
+                console.log(err);
+                distriButer = null;
+            })
+        });
+    }else{
+        distFilterFunction(yearData,monthDataNum,selectedFilter, filter_Name);
+    }
+}
+
+function distFilterFunction(yearData,monthDataNum,selectedFilter, filter_Name){
     selectedFilter.push({ dataType: "String", key: 'Year', value: yearData.toString() });
     selectedFilter.push({ dataType: "String", key: 'Month', value: monthDataNum.toString() });
     for (let i = 0; i < preSelectedFilterArrayIn.length; i++) {
@@ -550,6 +639,7 @@ function filtterSelectedIn(filterValue, filter_Name){
             console.log(err);
         })
     });
+
 }
 
 let repeataConceObj;
@@ -590,14 +680,14 @@ function repeatableConcentrationChart(data){
     let retailConc = [];
     for(let i=0; i < data.length; i++){
         quarFy.push(data[i].Quarter);
-        salesFy.push(data[i].Sales*1);//mahesh
+        salesFy.push(data[i].Sales*1);
         retailConc.push(data[i].Sales_Perc*1);
     }
 
 Highcharts.chart('repeatableSales', {
-    chart: {
-        zoomType: 'xy'
-    },
+    // chart: {
+    //     zoomType: 'xy'
+    // },
     credits: {
      enabled: false
     },
@@ -626,17 +716,6 @@ Highcharts.chart('repeatableSales', {
                 fontWeight: 600,
             }
         }
-    }, { // Secondary yAxis
-        title: {
-            text: '',
-            style: {
-                color: Highcharts.getOptions().colors[0]
-            }
-        },
-        labels: {
-            enabled : false
-        },
-        opposite: true
     }],
     tooltip: {
         formatter: function () {
@@ -655,7 +734,7 @@ Highcharts.chart('repeatableSales', {
                 if(points[index].series.name =="Repeatability of Sales(%)"){
                     perc='%';
                 }
-                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) +''+perc+ '</b><br/>';
+                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + Highcharts.numberFormat(y_value,2) +''+perc+ '</b><br/>';
             }
             return tooltipMarkup;
         },
@@ -674,18 +753,8 @@ Highcharts.chart('repeatableSales', {
     },
     series: [{
         showInLegend: false, 
-        name: 'Sales',
-        type: 'column',
-        yAxis: 1,
-        data: salesFy,
-        tooltip: {
-            valueSuffix: ''
-        }
-
-    }, {
-        showInLegend: false, 
         name: 'Repeatability of Sales(%)',
-        type: 'spline',
+        type: 'column',
         data: retailConc,
         dataLabels: {
             enabled: true,
@@ -731,27 +800,27 @@ jQuery("#repeatabilitySales").jqGrid('navGrid', '#repeatabilitySalesLoader', { e
 //-----Sales End -----------//
 
 
-$(document).on('change', '#yearFilter', function () {
-    let filterName = $(this).val();
-    let seleMonth = $("#monthFilter").val();
-    $(this).data('options', $('#monthDependantComboIdIn option').clone());
-    var finalArr = $(this).data('options').filter('[class="' + filterName + '"]');
+// $(document).on('change', '#yearFilter', function () {
+//     let filterName = $(this).val();
+//     let seleMonth = $("#monthFilter").val();
+//     $(this).data('options', $('#monthDependantComboIdIn option').clone());
+//     var finalArr = $(this).data('options').filter('[class="' + filterName + '"]');
 
-    var html = "";
-    let selected = '';
-    for (i = 0; i < finalArr.length; i++) {
-        jQuery(finalArr[i]).removeAttr("class");
-        selected = ''
-        for(j=0; j < seleMonth.length; j++){
-            if (finalArr[i].value  == seleMonth[j]) {
-                selected = 'selected';
-            }
-        }
-        html += "<option value='" + finalArr[i].value + "' " + selected + ">" + finalArr[i].text + "</option>"
-    }
-    $("#monthFilter").empty();
-    $("#monthFilter").html(html);
-});
+//     var html = "";
+//     let selected = '';
+//     for (i = 0; i < finalArr.length; i++) {
+//         jQuery(finalArr[i]).removeAttr("class");
+//         selected = ''
+//         for(j=0; j < seleMonth.length; j++){
+//             if (finalArr[i].value  == seleMonth[j]) {
+//                 selected = 'selected';
+//             }
+//         }
+//         html += "<option value='" + finalArr[i].value + "' " + selected + ">" + finalArr[i].text + "</option>"
+//     }
+//     $("#monthFilter").empty();
+//     $("#monthFilter").html(html);
+// });
 
 
 
@@ -811,14 +880,23 @@ jQuery("#retailerConc").jqGrid({
     sortorder: "desc",
 
 
-    colNames: ["Distributors","Sales Contribution","Retailer Concentration"],
+    colNames: ["Id","Distributors","Sales Contribution","Retailer Concentration (%)"],
 
 
     colModel: [
+        { name: 'DistributorId', index: 'DistributorId', sortable: true,hidden:true, },
         { name: 'Distributor', index: 'Distributor', sortable: true },
         { name: 'Sales_Contrib', index: 'Sales_Contrib', sortable: true },
         { name: 'Retailer_Concent', index: 'Retailer_Concent', sortable: true },
-    ]
+    ],
+    onSelectRow: function (rowId) {
+        let rowData = $('#retailerConc').jqGrid('getRowData', rowId);
+        distributerId = rowData.DistributorId;
+        showHideLoaderIn("correRetailerLoader", true);
+        showHideLoaderIn("retailerConce", true);
+        showHideLoaderIn("retailerperc", true);
+        selectedDistributerData(distributerId);
+    },
 });
 jQuery("#retailerConc").jqGrid('navGrid', '#retailerConcLoader', { edit: false, add: false, del: false, refresh: true });
 
@@ -826,6 +904,48 @@ jQuery("#retailerConc").jqGrid('navGrid', '#retailerConcLoader', { edit: false, 
 
 }
 
+let distributerId='';
+
+let disrtiSelectObj;
+function selectedDistributerData(distributerId){
+    $("#correRetailer").jqGrid('GridUnload');
+    $("#correRetailer").empty();
+    if (disrtiSelectObj) {
+        disrtiSelectObj.abort();
+        disrtiSelectObj = null;
+    }
+    let filterData = createInsightFilterData();
+    filterData = filterData.filter((item) => item.key !== "distributorId");
+    filterData.push({ dataType: "String", key: 'distributorId', value: distributerId.toString() });
+    let procedureName = "Bajaj_Insight_Retailer_Concentration";
+    disrtiSelectObj = $.ajax({
+        url: getApiDomain(),
+        type: 'POST',
+        data: JSON.stringify({ chartDataForms: filterData, filter: procedureName,'filterHash' : cTageHash( procedureName + JSON.stringify(filterData)),'dashboardId' : dashboardId }),
+     
+      //  data: JSON.stringify({ 'filter': "Bajaj_Insight_Retailer_Concentration", 'chartDataForms': filterData }),
+        success: (function (resultData) {
+            let data = resultData.data.data[0];
+            let data1 = resultData.data.data[1];
+            let data2 = resultData.data.data[2];
+            let data3 = resultData.data.data[3];
+            //showHideLoaderIn("retailerConcLoader", false);
+            showHideLoaderIn("correRetailerLoader", false);
+            showHideLoaderIn("retailerConce", false);
+            showHideLoaderIn("retailerperc", false);
+            disrtiSelectObj = null;
+            //createDistributerWiseRetailersTable(data);
+            createcorespondingRetailersTable(data2);
+            retailerConcentrationChart(data3);
+            retailerPercentageChart(data1);
+        }),
+        error: (function (err) {
+            disrtiSelectObj = null;
+            console.log(err);
+        })
+    });
+
+}
 
 
 function createcorespondingRetailersTable(data){
@@ -865,8 +985,8 @@ function retailerConcentrationChart(data){
     let retailConc = [];
     for(let i=0; i < data.length; i++){
         quarFy.push(data[i].Quarter);
-        salesFy.push(data[i].Sales*1);
-        retailConc.push(data[i].Contrib_total*1);
+        salesFy.push(data[i].Retailer_Concent*1);
+        retailConc.push(data[i].Retailer_Concent*1);
     }
 
 Highcharts.chart('retailerConce', {
@@ -932,10 +1052,10 @@ Highcharts.chart('retailerConce', {
                     y_value = points[index].y;
                 }
                 let perc='';
-                if(points[index].series.name =="Sales Growth"){
+                if(points[index].series.name =="Retailer Concentration"){
                     perc='%';
+                    tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + Highcharts.numberFormat(y_value,2)+ ''+perc+'</b><br/>';
                 }
-                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + ''+perc+'</b><br/>';
             }
             return tooltipMarkup;
         },
@@ -954,19 +1074,28 @@ Highcharts.chart('retailerConce', {
     },
     series: [{
         showInLegend: false, 
-        name: 'Sales',
-        type: 'column',
-        yAxis: 1,
-        data: salesFy,
+        name: 'Retailer',
+        type: 'spline',
+        data: retailConc,
+        zIndex: 2,
+        color: Highcharts.getOptions().colors[1],
+        // dataLabels: {
+        //     enabled: true,
+        //     formatter: function () {
+        //         return Highcharts.numberFormat(this.y,2)+"%";
+        //     }
+        // },
         tooltip: {
             valueSuffix: ''
         }
 
     }, {
         showInLegend: false, 
-        name: 'Sales Growth',
-        type: 'spline',
+        name: 'Retailer Concentration',
+        type: 'column',
         data: retailConc,
+        zIndex: 1,
+        color: Highcharts.getOptions().colors[0],
         dataLabels: {
             enabled: true,
             formatter: function () {
@@ -1103,7 +1232,7 @@ function marketShareDeclineChartApi(startValue,endValue){
         let filterData = createInsightFilterData();
         filterData.push({ dataType: "String", key: 'fromCount', value: startValue.toString() });
         filterData.push({ dataType: "String", key: 'toCount', value: endValue.toString() });
-        filterData.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
+        //filterData.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
         let procedureName="Market_Share_Decline";
         marketShareObj = $.ajax({
             url: getApiDomain(),
@@ -1150,8 +1279,8 @@ function marketShareDeclineChart(data){
     let retailConc = [];
     for(let i=0; i < data.length; i++){
         quarFy.push(data[i].Quarter);
-        salesFy.push(data[i].Sales*1);
-        retailConc.push(data[i].Sales_Per*1);
+        salesFy.push(data[i].Sales_Per*1);
+        retailConc.push(data[i].Growth*1);
     }
 
 Highcharts.chart('markerShareId', {
@@ -1177,17 +1306,17 @@ Highcharts.chart('markerShareId', {
         categories: quarFy,
         crosshair: true
     }],
-    yAxis: [{ // Primary yAxis mahesh123
+    yAxis: [{ // Primary yAxis 
         labels: {
             formatter: function () {  
-                return (this.value / 10000000).toFixed(0) + ' Cr';
+                return this.value;
             },
             style: {
                 color: Highcharts.getOptions().colors[1]
             }
         },
         title: {
-            text: 'Sales',
+            text: 'Market Share',
             style: {
                 color: Highcharts.getOptions().colors[1]
             }
@@ -1226,7 +1355,7 @@ Highcharts.chart('markerShareId', {
                 if(points[index].series.name =="Market Share Growth"){
                     perc='%';
                 }
-                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + ''+perc+'</b><br/>';
+                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + Highcharts.numberFormat(y_value,2)+ ''+perc+'</b><br/>';
             }
             return tooltipMarkup;
         },
@@ -1292,7 +1421,7 @@ function declineTableCreateTable(data){
         sortorder: "desc",
     
     
-        colNames: ["District","Distributor","Part Groups","Market Share Growth(%)"],
+        colNames: ["District","Distributor","Part Class","Market Share Growth(%)"],
     
     
         colModel: [
@@ -1362,7 +1491,7 @@ function lowMarketShareTableChartApi(fromValue,toValue){
         let filterData = createInsightFilterData();
         filterData.push({ dataType: "String", key: 'fromCount', value: fromValue.toString() });
         filterData.push({ dataType: "String", key: 'toCount', value: toValue.toString() });
-        filterData.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
+      //  filterData.push({ dataType: "String", key: 'PartCategory', value: patCata.toString() });
         let procedureName = "Market_Share_Details";
         lowShareObj = $.ajax({
             url: getApiDomain(),
@@ -1413,123 +1542,101 @@ function lowShareChart(data){
         salesFy.push(data[i].Sales*1);
         retailConc.push(data[i].Sales_Per*1);
     }
-
-Highcharts.chart('lowShareId', {
-    chart: {
-        zoomType: 'xy'
-    },
-    credits: {
-     enabled: false
-    },
-    title: {
-        text: 'Market Share Trend across Quarters',
-        style: {
-            fontFamily: 'sans-serif',
-            fontSize: '14px',
-            fontWeight: 600,
-         }
-    },
-    subtitle: {
-        text: ''
-    },
-    xAxis: [{
-        categories: quarFy,
-        crosshair: true
-    }],
-    yAxis: [{ // Primary yAxis  mahesh123
-        labels: {
-            formatter: function () {  
-                return (this.value / 10000000).toFixed(0) + ' Cr';
+    Highcharts.chart('lowShareId', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Market Share Trend across Quarters',
+            style: {
+                fontFamily: 'sans-serif',
+                fontSize: '14px',
+                fontWeight: 600,
+             }
+        },
+        subtitle: {
+            text: ''
+        },
+        xAxis: {
+            categories: quarFy,
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            labels: {
+                format: '{value} %',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
+                }
             },
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-        title: {
-            text: 'Sales',
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-    }, { 
-        labels: {
-            format: '{value} %',
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-        title: {
-            text: 'Market Share',
-            style: {
-                color: Highcharts.getOptions().colors[1]
-            }
-        },
-        opposite: true
-    }],
-    tooltip: {
-        formatter: function () {
-            var points = this.points;
-            var pointsLength = points.length;
-            var tooltipMarkup = pointsLength ? '<span style="font-size: 13px">Quarter: ' + points[0].key + '</span><br/>' : '';
-            var index;
-            var y_value;
-            for (index = 0; index < pointsLength; index++) {
-                if (points[index].point.target != undefined) {
-                    y_value = points[index].point.target;
-                } else {
-                    y_value = points[index].y;
+            title: {
+                text: 'Market Share',
+                style: {
+                    color: Highcharts.getOptions().colors[1]
                 }
-                let perc='';
-                if(points[index].series.name =="Market Share"){
-                    perc='%';
-                }
-                tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + ''+perc+'</b><br/>';
-            }
-            return tooltipMarkup;
+            },
+            plotLines: [{
+                color: '#FF0000',
+                width: 2,
+                value: 50
+            }]
         },
-        shared: true
-    },
-    legend: {
-        layout: 'vertical',
-        align: 'left',
-        x: 120,
-        verticalAlign: 'top',
-        y: 100,
-        floating: true,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || // theme
-            'rgba(255,255,255,0.25)'
-    },
-    series: [{
-        showInLegend: false, 
-        name: 'Market Share',
-        type: 'spline',
-        yAxis: 1,
-        zIndex: 2,
-        color:Highcharts.getOptions().colors[1],
-        data: retailConc,
-        dataLabels: {
+        tooltip: {
+            formatter: function () {
+                var points = this.points;
+                var pointsLength = points.length;
+                var tooltipMarkup = pointsLength ? '<span style="font-size: 13px">Quarter: ' + points[0].key + '</span><br/>' : '';
+                var index;
+                var y_value;
+                for (index = 0; index < pointsLength; index++) {
+                    if (points[index].point.target != undefined) {
+                        y_value = points[index].point.target;
+                    } else {
+                        y_value = points[index].y;
+                    }
+                    let perc='';
+                    if(points[index].series.name =="Market Share"){
+                        perc='%';
+                    }
+                    tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + Highcharts.numberFormat(y_value,2) + ''+perc+'</b><br/>';
+                }
+                return tooltipMarkup;
+            },
+            shared: true,
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            x: 120,
+            verticalAlign: 'top',
+            y: 100,
+            floating: true,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || // theme
+                'rgba(255,255,255,0.25)'
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            showInLegend: false,
+            name: 'Market Share',
+            data: retailConc,
+            dataLabels: {
             enabled: true,
             formatter: function () {
                 return Highcharts.numberFormat(this.y,2)+"%";
+             }
+            },
+            tooltip: {
+                valueSuffix: '%'
             }
-        },
-        tooltip: {
-            valueSuffix: '%'
-        }
-    },{
-        showInLegend: false, 
-        name: 'Sales',
-        type: 'column',
-        zIndex: 1,
-        color:Highcharts.getOptions().colors[0],
-        data: salesFy,
-        tooltip: {
-            valueSuffix: ''
-        }
-
-    }]
-});
+    
+        }]
+    });
 }
 
 function lowShareTableCreateTable(data){
@@ -1548,7 +1655,7 @@ function lowShareTableCreateTable(data){
         sortorder: "desc",
     
     
-        colNames: ["District","Distributor","Part Groups","Market Share(%)"],
+        colNames: ["District","Distributor","Part Class","Market Share(%)"],
     
     
         colModel: [

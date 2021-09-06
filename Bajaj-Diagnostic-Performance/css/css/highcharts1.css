@@ -546,11 +546,11 @@
 	fill-opacity: 0.05;
   }
   
-  .highcharts-plot-line {
+  /* .highcharts-plot-line {
 	fill: none;
 	stroke: #999999;
 	stroke-width: 1px;
-  }
+  } */
   
   /* Highcharts More and modules */
   .highcharts-boxplot-box {

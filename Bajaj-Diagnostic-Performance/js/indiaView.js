@@ -346,7 +346,7 @@ function indPotentialvsSalesChart(stateData) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -375,7 +375,7 @@ function indPotentialvsSalesChart(stateData) {
             color: '#02b8fd',
             data: gapData
         }, {
-            name: 'Potential',
+            name: 'Addressability',
             color: '#0046cc',
             data: potentData
         }, {
@@ -384,7 +384,7 @@ function indPotentialvsSalesChart(stateData) {
             data: salesData
         },{
             showInLegend: false, 
-            name: 'Penetration',
+            name: 'Market Share',
                 color:'#E1C233',
                 data: penetraData
         }]
@@ -521,7 +521,7 @@ function indPartPotentialvsSalesChart(data) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -550,7 +550,7 @@ function indPartPotentialvsSalesChart(data) {
             color: '#02b8fd',
             data: GAPData
         }, {
-            name: 'Potential',
+            name: 'Addressability',
             color: '#0046cc',
             data: PotentialData
         }, {
@@ -559,7 +559,7 @@ function indPartPotentialvsSalesChart(data) {
             data: SalesData
         },{
             showInLegend: false, 
-            name: 'Penetration',
+            name: 'Market Share',
                 color:'#E1C233',
                 data: PenetrationData
         }]
@@ -834,7 +834,7 @@ function sharedDataCalling() {
     command.filterData = filterData
 
     let sharePotential = "Potential," + sharedFormatter(potentialIndShareValues[0].CY_Potential) + "," + sharedFormatter(potentialIndShareValues[0].PY_Potential) + "," + sharedFormatter(potentialIndShareValues[0].YoY_Potential) + "%";
-    let sharePenetration = "Penetration," + sharedFormatter(penetraIndShareValues[0].CY_Penetration) + "," + sharedFormatter(penetraIndShareValues[0].PY_Penetration) + "," + sharedFormatter(penetraIndShareValues[0].YoY_Penetration) + "%";
+    let sharePenetration = "Market Share," + sharedFormatter(penetraIndShareValues[0].CY_Penetration) + "," + sharedFormatter(penetraIndShareValues[0].PY_Penetration) + "," + sharedFormatter(penetraIndShareValues[0].YoY_Penetration) + "%";
     let shareSales = "Sales," + sharedFormatter(saleIndShareValues[0].CY_Sales) + "," + sharedFormatter(saleIndShareValues[0].PY_Sales) + "," + sharedFormatter(saleIndShareValues[0].YoY_Sales) + "%";
     let shareDealers = "Dealers," + sharedFormatter(delIndShareValues[0].CY_Sales) + "," + sharedFormatter(delIndShareValues[0].PY_Sales) + "," + sharedFormatter(delIndShareValues[0].YoY_Sales) + "%";
     let shareDisribute = "Distributers," + sharedFormatter(disIndShareValues[0].CY_Sales) + "," + sharedFormatter(disIndShareValues[0].PY_Sales) + "," + sharedFormatter(disIndShareValues[0].YoY_Sales) + "%";

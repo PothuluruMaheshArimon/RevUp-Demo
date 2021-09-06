@@ -428,7 +428,7 @@ function stateTotalTownChart(territoryData) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + (y_value) + '</b><br/>';
@@ -538,7 +538,7 @@ function StatePotentialvsSalesChart(territoryData) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -568,12 +568,12 @@ function StatePotentialvsSalesChart(territoryData) {
             color: '#02b8fd',
             data: salesData
         },{
-            name: 'Potential',
+            name: 'Addressability',
             color: '#ff5e19',
             data: potentialData
         },{
             showInLegend: false, 
-            name: 'Penetration',
+            name: 'Market Share',
             color:'#E1C233',
             data: penetrationData
         }]
@@ -674,7 +674,7 @@ function statecategorychart(distributorData) {
             color: '#ff5e19',
             data: discoverData
         }, {
-            name: 'Platina',
+            name: 'Jupiter',
             color: '#0046cc',
             data: platinaData
         }]
@@ -754,7 +754,7 @@ function StateRetailerChart(retailerData) {
                     } else {
                         y_value = points[index].y;
                     }
-                    if(points[index].series.name =="Penetration"){
+                    if(points[index].series.name =="Market Share"){
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b>' + y_value + ' %</b><br/>';
                     }else{
                         tooltipMarkup += '<span style="color:' + points[index].series.color + '">\u25CF</span> ' + points[index].series.name + ': <b><i class="fa fa-inr" aria-hidden="true"></i>' + getnumFormatterRupe(y_value) + '</b><br/>';
@@ -786,7 +786,7 @@ function StateRetailerChart(retailerData) {
             color: '#02b8fd',
             data: gapData
         }, {
-            name: 'Potential',
+            name: 'Addressability',
             color: '#0046cc',
             data: potenData
         }, {
@@ -795,7 +795,7 @@ function StateRetailerChart(retailerData) {
             data: salesData
         },{
             showInLegend: false, 
-            name: 'Penetration',
+            name: 'Market Share',
             color:'#E1C233',
             data: penetrData
         }]
@@ -914,7 +914,7 @@ function sharedDataStateCalling() {
     command.filterData = filterData
 
     let sharePotential = "Potential," + sharedFormatter(potentialStateShareValues[0].CY_Potential) + "," + sharedFormatter(potentialStateShareValues[0].PY_Potential) + "," + sharedFormatter(potentialStateShareValues[0].YoY_Potential) + "%";
-    let sharePenetration = "Penetration," + sharedFormatter(penetraStateShareValues[0].CY_Penetration) + "," + sharedFormatter(penetraStateShareValues[0].PY_Penetration) + "," + sharedFormatter(penetraStateShareValues[0].YoY_Penetration) + "%";
+    let sharePenetration = "Market Share," + sharedFormatter(penetraStateShareValues[0].CY_Penetration) + "," + sharedFormatter(penetraStateShareValues[0].PY_Penetration) + "," + sharedFormatter(penetraStateShareValues[0].YoY_Penetration) + "%";
     let shareDealers = "Dealers Sales," + sharedFormatter(saleStateShareValues[0].CY_Sales) + "," + sharedFormatter(saleStateShareValues[0].PY_Sales) + "," + sharedFormatter(saleStateShareValues[0].YoY_Sales) + "%";
     let shareDisribute = "Retailers," + sharedFormatter(retStateShareValues[0].CY_Count) + "," + sharedFormatter(retStateShareValues[0].PY_Count) + "," + sharedFormatter(retStateShareValues[0].YoY_Count) + "%";
     let shareSku = "#SKU," + sharedFormatter(skuStateShareValues[0].CY_Count) + "," + sharedFormatter(skuStateShareValues[0].PY_Count) + "," + sharedFormatter(skuStateShareValues[0].YoY_Count) + "%";

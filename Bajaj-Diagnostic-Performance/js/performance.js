@@ -306,7 +306,13 @@ function performViewChartApi() {
     // let fynewYear= $("#yearFilter").val();
     for (let k = 0; k < globerTotalYears.length; k++) {
         if (oldYear == parseInt(globerTotalYears[k].Fiscal_Year_Full)) {
-            fyOldYear = globerTotalYears[k].FiscalYear;
+            if(oldYear != curYear){
+                let member = oldYear.toString();
+                var last2 = member.slice(-2);
+                fyOldYear = "FY"+last2+"-"+(parseInt(last2)+1);
+            }else{
+                fyOldYear = globerTotalYears[k].FiscalYear;
+            }
         }
         if (curYear == parseInt(globerTotalYears[k].Fiscal_Year_Full)) {
             fynewYear = globerTotalYears[k].FiscalYear;

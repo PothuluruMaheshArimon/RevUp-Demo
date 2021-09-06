@@ -265,7 +265,7 @@
                 <select name="State" class="filter" id="stateFilter" multiple="multiple"></select>
             </div>
             <div class="col filterCol" id="territoryDiv" style="display: none;">
-                <div class="filterTitle">Territory &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="fa-fa-eraser" data-toggle="tooltip"
+                <div class="filterTitle">Branch &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="fa-fa-eraser" data-toggle="tooltip"
                         title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
                         class="loaderFil" style="display: none;">
                     </div>
@@ -292,8 +292,8 @@
             </div>
 
             <div class="col filterCol" id="partCategoryDiv" style="margin-right: -4px;">
-                <!-- partcategory change to part Group -->
-                <div class="filterTitle"> Part Group</div>
+                <!-- partcategory change to Part Class -->
+                <div class="filterTitle"> Part Class</div>
                 <select name="Part_Category" class="filter" id="partCategoryFilter" multiple="multiple"></select>
             </div>
 
@@ -325,7 +325,7 @@
                     <table id="indSalesMtdId" style="width: 100%;">
 
                                 <tr>
-                                    <th colspan="3">Potential <div class="dropdown">
+                                    <th colspan="3">Addressability <div class="dropdown">
                                             <!-- <a class="dropbtn"></a> -->
                                             <div class="dropdown-content">
                                                 <a onclick='createCommentDataCalling()'
@@ -349,7 +349,7 @@
                     <div class="tableDiv">
                         <table id="indSalesYtdId" style="width: 100%;">
                             <tr>
-                                <th colspan="3">Penetration %</th>
+                                <th colspan="3">Market Share %</th>
                                 <div id="indPene" class="metricLoader"></div>
                             </tr>
                             <tr>
@@ -416,29 +416,29 @@
                     <div class="cal potenVsSales">
                         <table>
                             <tr class="commonHeading">
-                                <th title="State Wise Potential">State Wise Potential Vs Sales</th>
+                                <th title="State Wise Addressability">State Wise Addressability Vs Sales</th>
                             </tr>
                         </table>
-                        <div id="indPotvsSaleContain" style="width: 359px;    height: 350px;" class="State Wise Potential Vs Sales">
+                        <div id="indPotvsSaleContain" style="width: 359px;    height: 350px;" class="State Wise Addressability Vs Sales">
 
                         </div>
                     </div>&nbsp;
                     <div class="cal brandPoten">
                         <table>
                             <tr class="commonHeading">
-                                <th title="Brand Wise Potential">Brand Wise Potential</th>
+                                <th title="Brand Wise Addressability">Brand Wise Addressability</th>
                             </tr>
                         </table>
-                        <div id="indBranPotenContain" style="width: 359px;    height: 350px;" class="Brand Wise Potential">
+                        <div id="indBranPotenContain" style="width: 359px;    height: 350px;" class="Brand Wise Addressability">
                         </div>
                     </div>&nbsp;
                     <div class="cal partPoten">
                         <table>
                             <tr class="commonHeading">
-                                <th title="Part Category Wise Potential Vs Sales">Part Category Wise Potential Vs Sales</th>
+                                <th title="Part Category Wise Addressability Vs Sales">Part Category Wise Addressability Vs Sales</th>
                             </tr>
                         </table>
-                        <div id="indPartPotenContain" style="width: 360px;    height: 350px;" class="Part Category Wise Potential Vs Sales">
+                        <div id="indPartPotenContain" style="width: 360px;    height: 350px;" class="Part Category Wise Addressability Vs Sales">
 
                         </div>
                     </div>
@@ -452,7 +452,7 @@
                     <table id="satPoteId" style="width: 100%;">
 
                         <tr>
-                            <th colspan="3">Potential<div class="dropdown">
+                            <th colspan="3">Addressability<div class="dropdown">
                                     <!-- <a class="dropbtn">...</a> -->
                                     <div class="dropdown-content">
                                         <a onclick='createCommentDataCalling()'
@@ -476,7 +476,7 @@
                     <div class="tableDiv" style="    width: 19.33%;">
                         <table id="satpenetId" style="width: 100%;">
                             <tr>
-                                <th colspan="3">Penetration %</th>
+                                <th colspan="3">Market Share %</th>
                                 <div id="statePen" class="metricLoader"></div>
                             </tr>
                             <tr>
@@ -530,19 +530,19 @@
                     <div class="cal satpotenVsSales">
                         <table>
                             <tr class="commonHeading">
-                                <th title="State Wise Potential">Territory Wise Potential Vs Sales (INR)</th>
+                                <th title="State Wise Addressability">Branch Wise Addressability Vs Sales (INR)</th>
                             </tr>
                         </table>
-                        <div id="satPotvsSaleContain" style="width: 351px;    height: 360px;" class="Territory Wise Potential Vs Sales">
+                        <div id="satPotvsSaleContain" style="width: 351px;    height: 360px;" class="Branch Wise Addressability Vs Sales">
                         </div>
                     </div>&nbsp;&nbsp;
                     <div class="cal sattotaltowns" style="width: 347px;">
                         <table>
                             <tr class="commonHeading">
-                                <th title="State Wise Towns">Territory Wise Total Towns</th>
+                                <th title="State Wise Towns">Branch Wise Total Towns</th>
                             </tr>
                         </table>
-                        <div id="satTotalTownsContain" style="width: 351px;    height: 350px;" class="Territory Wise Total Towns">
+                        <div id="satTotalTownsContain" style="width: 351px;    height: 350px;" class="Branch Wise Total Towns">
 
                         </div>
                     </div>&nbsp;&nbsp;
@@ -553,10 +553,10 @@
                         <div class="col1 chartDiv2" style="height: 50%;    width: 100%;">
                             <table>
                                 <tr class="headingbar1">
-                                    <th title="Brand Wise Potential">Part Category Wise Potential Vs Sales</th>
+                                    <th title="Brand Wise Addressability">Part Category Wise Addressability Vs Sales</th>
                                 </tr>
                             </table>
-                            <div id="satcatPotenContainId" class="Part Category Wise Potential Vs Sales"
+                            <div id="satcatPotenContainId" class="Part Category Wise Addressability Vs Sales"
                                 style="height: 160px;     width: 359px;">
                             </div>
 
@@ -566,7 +566,7 @@
                         <div class="col1 chartDiv2" style="height: 50%;    width: 100%;">
                             <table>
                                 <tr class="headingbar1">
-                                    <th title="Brand Wise Potential" style="    border-top: dotted #d8d9da90;">Brand Wise Potential</th>
+                                    <th title="Brand Wise Addressability" style="    border-top: dotted #d8d9da90;">Brand Wise Addressability</th>
                                 </tr>
                             </table>
                             <div id="satRetperform" class="Distributor Contribution"
@@ -587,7 +587,7 @@
                         <table id="disSalesId" style="width: 100%;">
     
                             <tr>
-                                <th colspan="3"> Potential
+                                <th colspan="3"> Addressability
                                     <div class="dropdown">
                                         <!-- <a class="dropbtn"></a> -->
                                         <div class="dropdown-content">
@@ -625,7 +625,7 @@
                         <div class="tableDiv" style="width: 19.2%;">
                             <table id="disInvoId" style="width: 100%;">
                                 <tr>
-                                    <th colspan="3">Penetration %</th>
+                                    <th colspan="3">Market Share %</th>
                                     <div id="disInv" class="metricLoader"></div>
                                 </tr>
                                 <tr>
@@ -688,10 +688,10 @@
                     <div class="cal DispotenVsSales" style=" height: 378px;">
                         <table>
                             <tr class="commonHeading">
-                                <th title="State Wise Potential">Part Category Potential Vs Sales</th>
+                                <th title="State Wise Addressability">Part Category Addressability Vs Sales</th>
                             </tr>
                         </table>
-                        <div id="partcategoryChartContainerId" style="width: 257px;; height: 360px;" class="Part Category wise Potential Vs Sales">
+                        <div id="partcategoryChartContainerId" style="width: 257px;; height: 360px;" class="Part Category wise Addressability Vs Sales">
                         </div>
                     </div>&nbsp;&nbsp;
 
@@ -946,7 +946,7 @@
                     <div class="tableDiv">
                         <table border="1" id="partPonId">
                             <tr>
-                                <th colspan="3">Potential<div class="dropdown">
+                                <th colspan="3">Addressability<div class="dropdown">
                                         <a class="dropbtn">...</a>
                                         <div class="dropdown-content">
                                             <a onclick='createCommentDataCalling()'
@@ -967,7 +967,7 @@
                     <div class="tableDiv">
                         <table border="1" id="partPenId">
                             <tr>
-                                <th colspan="3">Penetration</th>
+                                <th colspan="3">Market Share</th>
                             </tr>
                             <!-- <tr><td>1253</td><td>1418</td><td>4584</td></tr> -->
                         </table>
@@ -1005,12 +1005,12 @@
                         <div class="headingbar">
                             <span style="    color: #3d84a6;
                             font-weight: bold;
-                            font-size: 15px;"> Part Group Performance
+                            font-size: 15px;"> Part Class Performance
                             </span>
                             <div class="dropdown" style="    margin-left: 32vw;color: #3d84a6;
                             font-weight: bold;
                             font-size: 15px;">
-                                Part Group<a class="dropbtn">...</a>
+                                Part Class<a class="dropbtn">...</a>
                                 <div class="dropdown-content">
                                     <a onclick='createCommentTableDataCalling()'
                                         style="    font-size: smaller;color: black;padding: 6px 10px;">Create
@@ -1540,7 +1540,7 @@
                 margin: 0px;
             max-height: 94vh; width: 99%;">
                 <div class="row chartDiv" style="width: 100%;     margin: 0px;   height: 77vh; font-size: 11px;">
-                    <!-- /** Retailer View Part Group wise Sales table in channel view Drill Down****************************/ -->
+                    <!-- /** Retailer View Part Class wise Sales table in channel view Drill Down****************************/ -->
                    <div style="width: 100%;     margin: 1% 0px -3%;height: 10%;" class="row" id="drillheadersChannel">
                         <div class="col" style="background-color: white;">
                             <input id="retaileNameForDrill" style="font-size: 14px;
@@ -1635,7 +1635,7 @@
                     <!-- /** Retailer Summery table in channel view Drill Down ****************************/ -->
                     <div class="channelTable">
                         <div class="headingbar" style="text-align: left;">
-                            <span style=" color: #3d84a6;font-weight: bold;text-align: center; font-size:16px;"> Recommended Part Group wise Sales
+                            <span style=" color: #3d84a6;font-weight: bold;text-align: center; font-size:16px;"> Recommended Part Class wise Sales
                             </span>
                         <div style="margin-top: -17px;margin-left: 85%;">
                                 <div class="dropdown">
@@ -1670,7 +1670,7 @@
                         </button>
                     </div>
 
-                    <!-- /** Retailer View Part Group wise Sales table in channel view Drill Down****************************/ -->
+                    <!-- /** Retailer View Part Class wise Sales table in channel view Drill Down****************************/ -->
                     <div class="channelTable">
                         <div class="headingbar" style="text-align: left;">
                         <span style=" color: #3d84a6;font-weight: bold;text-align: center; font-size:16px;"> Recommended Part wise Order </span>
@@ -1767,14 +1767,14 @@
         </div>
         <!--*********** dashboard filter **************************** -->
         <div class="row filterRow">
-            <div class="col filterCol" id="yearDivIn" style="    margin-left: -6px;">
+            <!-- <div class="col filterCol" id="yearDivIn" style="    margin-left: -6px;">
                 <div class="filterTitle">Fiscal Year</div>
                 <select name="Year" class="filterIn" id="yearFilterIn"></select>
             </div>
             <div class="col filterCol" id="monthDivIn">
                 <div class="filterTitle">Month</div>
                 <select name="Month" class="filterIn" id="monthFilterIn" multiple="multiple"></select>
-            </div>
+            </div> -->
             <div class="col filterCol" id="stateDivIn">
                 <div class="filterTitle">State &nbsp;&nbsp;&nbsp;<i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
                         title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
@@ -1784,7 +1784,7 @@
                 <select name="State" class="filterIn" id="stateFilterIn"></select>
             </div>
             <div class="col filterCol" id="territoryDivIn" style="display: none;">
-                <div class="filterTitle">Territory &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
+                <div class="filterTitle">Branch &nbsp;&nbsp;&nbsp; <i class="fa fa-eraser" id="filterInCha" data-toggle="tooltip"
                         title="Reset" data-placement="right" style="cursor: pointer;"></i>&nbsp;&nbsp;&nbsp;<div
                         class="loaderFilIn" style="display: none;">
                     </div>
@@ -1804,11 +1804,11 @@
                 <div class="filterTitle">District</div>
                 <select name="district" class="filterIn" id="districtFilterIn" multiple="multiple"></select>
             </div>
-            <div class="col filterCol" id="partCategoryDivIn" style="display: none;">
-                <!-- partcategory change to part Group -->
-                <div class="filterTitle"> Part Group</div>
+            <!-- <div class="col filterCol" id="partCategoryDivIn" style="display: none;">
+                partcategory change to Part Class
+                <div class="filterTitle"> Part Class</div>
                 <select name="Part_Category" class="filterIn" id="partCategoryFilterIn" multiple="multiple"></select>
-            </div>
+            </div> -->
 
         </div>
 
@@ -2416,7 +2416,7 @@ button.multiselect {
        
         $("#benchmarrkId").show();
         if(!$('#iframe').length) {
-                $('#benchmarrkId').html('<iframe id="iframe" src="https://api-uat.digilytics.solutions/bim/api/v1/dashboard/227/report/290" width="80%" style="border:none;" height="100%"></iframe>');
+                $('#benchmarrkId').html('<iframe id="iframe" src="https://api-uat.digilytics.solutions/bim/api/v1/dashboard/235/report/291" width="80%" style="border:none;" height="100%"></iframe>');
         }
     });   
 
@@ -2437,8 +2437,11 @@ button.multiselect {
         $("#stateView,#RCView,#benchView,#LMSaherView,#MSCView,#disrtiView,#channelView,#perforView,#indiaView").css('font-weight', '100');
         showHideLoaderIn("repeatableSales", true);
         showHideLoaderIn("repeatabilitySalesLoader", true);
-        repeatableSalesTableChartApi();
-        // callBajajInsightFiltersOptions();
+        $("#stateFilterIn,#distributorFilterIn option,#districtFilterIn option").empty();
+        $("#repeatabilitySales").jqGrid('GridUnload');
+        $("#repeatabilitySales").empty();
+        //repeatableSalesTableChartApi();
+        callBajajInsightFiltersOptions();
     });   
 
     $('#RCView').click(function(){
@@ -2460,8 +2463,11 @@ button.multiselect {
         showHideLoaderIn("correRetailerLoader", true)
         showHideLoaderIn("retailerConce", true)
         showHideLoaderIn("retailerperc", true)
-        retailerConcentWiseRetailersApi();
-        // callBajajInsightFiltersOptions();
+        $("#stateFilterIn,#distributorFilterIn option,#districtFilterIn option").empty();
+        $("#retailerConc,#correRetailer").jqGrid('GridUnload');
+        $("#retailerConc,#correRetailer").empty();
+        //retailerConcentWiseRetailersApi();
+         callBajajInsightFiltersOptions();
     });   
     
     $('#MSCView').click(function(){
@@ -2481,11 +2487,14 @@ button.multiselect {
         $("#stateView,#RCView,#benchView,#LMSaherView,#disrtiView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
         showHideLoaderIn("markerShareItabledLoader", true)
         showHideLoaderIn("markerShareId", true)
+        $("#markerShareItabled").jqGrid('GridUnload');
+        $("#markerShareItabled").empty();
         firstLoad=true;
         startValue=0;
         endValue=100;
-        marketShareDeclineChartApi(startValue,endValue);
-        // callBajajInsightFiltersOptions();
+        $("#stateFilterIn,#distributorFilterIn option,#districtFilterIn option,#partCategoryFilterIn option").empty();
+       // marketShareDeclineChartApi(startValue,endValue);
+         callBajajInsightFiltersOptions();
     }); 
 
 
@@ -2506,15 +2515,19 @@ button.multiselect {
         $("#stateView,#RCView,#MSCView,#benchView,#disrtiView,#RoSView,#channelView,#perforView,#indiaView").css('font-weight', '100');
         showHideLoaderIn("lowShareItabledLoader", true)
         showHideLoaderIn("lowShareId", true)
+        $("#lowShareItabled").jqGrid('GridUnload');
+        $("#lowShareItabled").empty();
         oneTimeCall=true;
         fromValue=0;
         toValue=100;
-        lowMarketShareTableChartApi(fromValue,toValue);
+       // lowMarketShareTableChartApi(fromValue,toValue);
+       $("#stateFilterIn,#distributorFilterIn option,#districtFilterIn option,#partCategoryFilterIn option").empty();
+       callBajajInsightFiltersOptions();
     }); 
 
-    setTimeout(function() { 
-        callBajajInsightFiltersOptions();
-     }, 3000);
+    // setTimeout(function() { 
+    //     callBajajInsightFiltersOptions();
+    //  }, 3000);
 
 $('.mainTl').click(function (e) {
     if(!dropSelect){
@@ -2569,9 +2582,9 @@ $('.recommendation').click(function (e) {
 });
 
 $('#recomendView').click(function (e) {
-    retailerId = "1034";
-    currentRetailerName = "Kailash Auto Traders";
-    retailerOpporIn= "74,943";
+    retailerId = "R027153";
+    currentRetailerName = "Vaibhav International";
+    retailerOpporIn= "4,016";
     $("#recomendView").css('font-weight', '600');
     $("#InsightsDiv").hide();
         $("#channelView").css('font-weight', '400');

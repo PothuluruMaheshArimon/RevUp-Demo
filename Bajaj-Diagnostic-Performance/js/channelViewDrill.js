@@ -31,7 +31,7 @@ function goBackChannelView() {
     $("#channelContent").show();
     $("#recomendView").css('font-weight', '300');
     $("#channelView").css('font-weight', 'bold');
-    $("#subViewOfRecomme").hide();//mahesh
+   // $("#subViewOfRecomme").hide();//mahesh
     recomend=true;
     drillDownBack=true;
     preSelecetedOfTerry = $("#territoryFilter").val();
@@ -48,7 +48,7 @@ function channelDrilldown(){
     $("#channelContent").hide();
     $('#navigateModal').modal('hide');
     onloadFunction = false;
-    $("#subViewOfRecomme").show();//mahesh
+    //$("#subViewOfRecomme").show();//mahesh
     recomend=false;
     retailerName = retailerId;
     // $(".filterRow").hide();
